@@ -1,19 +1,34 @@
 import {Formik} from "formik";
 import Input from "../../../shared/ui/Input/Input";
 import StyledForm from "./auth.styles";
-import {Link} from "react-router";
+import {Link, useNavigate} from "react-router";
 import {schema} from "../model/validation";
+import {useDispatch} from "react-redux";
+import {register} from "../model/authSlice";
 
 const RegisterForm = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     return (
+
         <Formik
-            validationSchema={schema.custom}
+            validationSchema={schema.register}
             initialValues={{
                 email: "",
                 password: "",
-                password_confirmation: "",
+                confirmPassword: "",
             }}
-            onSubmit={() => console.log("onSubmit")}>
+            onSubmit={(values, {setSubmitting}) => {
+                dispatch(register({ email: values.email, password: values.password }))
+                setTimeout(() => {
+                    navigate("/auth/login");
+                    setSubmitting(false);
+                }, 1000)
+
+            }}
+            >
+            {({ isSubmitting  }) => (
             <StyledForm>
                 <h1>Регистрация</h1>
                 <Input
@@ -26,18 +41,19 @@ const RegisterForm = () => {
                     name="password"
                     id="password"
                     placeholder='Введите пароль'
-                    type = 'password'/>
+                    type='password'/>
                 <Input
                     label='Подтвердите пароль'
-                    name="confirm_password"
-                    id="confirm_password"
+                    name="confirmPassword"
+                    id="confirmPassword"
                     placeholder='Введите пароль повторно'
-                    type = 'password'/>
-                <button>
-                    Продолжить
+                    type='password'/>
+                <button type="submit" disabled={isSubmitting}>
+                    Зарегистрироваться
                 </button>
                 <p>Уже есть аккаунт? <Link to='/login'>Войти</Link></p>
             </StyledForm>
+            )}
         </Formik>
     );
 };

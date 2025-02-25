@@ -18,9 +18,13 @@
         .required("Подтвердите пароль")
 
     export const schema = {
-        custom: Yup.object().shape({
+        register: Yup.object().shape({
             email,
             password,
             confirmPassword
+        }),
+        login: Yup.object().shape({
+            email,
+            password
         })
     }

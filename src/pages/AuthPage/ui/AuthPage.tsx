@@ -1,17 +1,18 @@
 import {Outlet, useNavigate} from "react-router";
+import {Container, Title, ButtonContainer, Button} from "./auth.styles";
 
 const Auth = () => {
     const navigate = useNavigate();
 
     return (
-        <div>
-            <h1>Авторизация</h1>
-            <div>
-                <button onClick={() => navigate('/auth/registration')}>Зарегистрироваться</button>
-                <button onClick={() => navigate('/auth/login')}>Войти</button>
+        <Container>
+            <Title>Авторизация</Title>
+            <ButtonContainer>
+                <Button onClick={() => navigate('/registration')}>Регистрация</Button>
+                <Button onClick={() => navigate('/login')}>Войти</Button>
                 <Outlet/>
-            </div>
-        </div>
+            </ButtonContainer>
+        </Container>
     );
 };
 

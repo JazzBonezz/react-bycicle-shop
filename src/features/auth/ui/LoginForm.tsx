@@ -1,20 +1,31 @@
 import {Formik} from "formik";
 import Input from "../../../shared/ui/Input/Input";
 import StyledForm from "./auth.styles";
-import {Link} from "react-router";
+import {Link, useNavigate} from "react-router";
 import {schema} from "../model/validation";
+import {useDispatch} from "react-redux";
+import {login} from "../../../features/auth/model/authSlice";
 
-const RegisterForm = () => {
+import { FaArrowRightLong } from "react-icons/fa6";
+
+const LoginForm = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     return (
         <Formik
-            validationSchema={schema.custom}
+            validationSchema={schema.login}
             initialValues={{
                 email: "",
                 password: "",
             }}
-            onSubmit={() => console.log("onSubmit")}>
+            onSubmit={(values) => {
+                dispatch(login({ email: values.email, password: values.password }));
+                navigate("/home");
+            } }>
+
+
             <StyledForm>
-                <h1>Регистрация</h1>
+                <h1>Вход</h1>
                 <Input
                     label='Почта'
                     name="email"
@@ -26,13 +37,14 @@ const RegisterForm = () => {
                     id="password"
                     placeholder='Введите пароль'
                     type = 'password'/>
-                <button>
-                    Войти
+                <button type="submit" >
+                    Войти <FaArrowRightLong />
                 </button>
-                <p>Нет аккаунта? <Link to='/login'>Зарегистрироваться</Link></p>
+                <p>Нет аккаунта? <Link to='/auth/registration'>Зарегистрироваться</Link></p>
             </StyledForm>
+
         </Formik>
     );
 };
 
-export default RegisterForm;
+export default LoginForm;

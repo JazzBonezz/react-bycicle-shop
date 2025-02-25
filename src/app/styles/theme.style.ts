@@ -12,7 +12,8 @@ export const theme = {
     }
     , fontSizes: {
         default: '22px',
-        large: '44px'
+        large: '44px',
+        title: '64px'
     }
 };
 
