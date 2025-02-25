@@ -1,8 +1,8 @@
 import {Formik} from "formik";
-import Input from "../../../shared/ui/Input/Input.tsx";
-import StyledForm from "./register.styles.ts";
+import Input from "../../../shared/ui/Input/Input";
+import StyledForm from "./auth.styles";
 import {Link} from "react-router";
-import {schema} from "../model/validation.ts";
+import {schema} from "../model/validation";
 
 const RegisterForm = () => {
     return (

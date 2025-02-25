@@ -1,4 +1,4 @@
-import {Header, NavLink, NavLinkSecondary, List, Burger, BurgerMenu, BurgerMenuContainer} from "./Navbar.styles.ts";
+import {Header, NavLink, NavLinkSecondary, List, Burger, BurgerMenu, BurgerMenuContainer} from "./Navbar.styles";
 import {useState} from "react";
 
 const Navbar = () => {

@@ -1,1 +1,1 @@
-export { default as MainPage } from './ui/MainPage.tsx';
+export { default as MainPage } from './ui/MainPage';

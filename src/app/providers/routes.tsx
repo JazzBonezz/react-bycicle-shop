@@ -1,11 +1,13 @@
 import {createBrowserRouter} from "react-router";
-import HomePage from "../../pages/HomePage/ui/HomePage.tsx";
-import LoginForm from "../../features/auth/ui/LoginForm.tsx";
-import RegisterForm from "../../features/auth/ui/RegisterForm.tsx";
+
+import LoginForm from "../../features/auth/ui/LoginForm";
+import RegisterForm from "../../features/auth/ui/RegisterForm";
 import {MainPage} from "../../pages/MainPage";
-import AboutPage from "../../pages/AboutPage/ui/AboutPage.tsx";
-import AuthPage from "../../pages/AuthPage/ui/AuthPage.tsx";
-import CatalogPage from "../../pages/CatalogPage/ui/CatalogPage.tsx";
+import {AboutPage} from "@/pages/AboutPage";
+import {HomePage} from "@/pages/HomePage";
+import {CatalogPage} from "@/pages/CatalogPage";
+import {AuthPage} from "@/pages/AuthPage";
+
 
 const routes = createBrowserRouter([
     {

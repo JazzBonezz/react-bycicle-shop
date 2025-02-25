@@ -1,5 +1,5 @@
 import {Field, ErrorMessage as Error} from "formik";
-import {Container} from "./input.styles.ts";
+import {Container} from "./input.styles";
 import {FC} from "react";
 
 interface InputProps {
