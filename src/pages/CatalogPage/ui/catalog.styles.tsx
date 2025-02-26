@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     max-width: 90dvw;
-    height: 400dvh;
+    height: fit-content;
     margin: 1rem auto;
     display: grid;
     grid-template-columns: 3fr 1fr;
@@ -11,19 +11,24 @@ export const Container = styled.div`
 `;
 
 export const LeftSection = styled.div`
-    background: lightgreen;
-    height: 10vh;
     position: sticky;
     top: 0;
     align-self: start;
+    border-radius: ${(props) => props.theme.borderRadius.default};
 `;
 
 export const RightSection = styled.section`
     height: 100%;
+    
 `;
 
 export const FilterSection = styled.div`
-    background: lightpink;
+    background: ${(props) => props.theme.colors.secondary};
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    
 `;
 
 export const SearchContainer = styled.div`
@@ -49,10 +54,55 @@ export const SearchInput = styled.input`
     }
 `;
 
-export const SearchButton = styled.button`
-    height: 40px;
-    width: 10%;
-    border-radius: ${({ theme }) => theme.borderRadius.default};
-    border: none;
+export const FilterList = styled.ul`
+    display: flex;
+    margin: 1rem;
+    flex-direction: column;
+    list-style: none;
+    gap: 10px;
+    text-align: left; 
+    overflow: auto;
+    max-height: 300px;
+`
+
+export const Checkbox = styled.input.attrs({ type: "checkbox" })`
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid ${({ theme }) => theme.colors.primary};
+    border-radius: 4px;
+    display: inline-block;
+    position: relative;
     cursor: pointer;
+    margin-right: 10px;
+    transition: all 0.2s ease-in-out;
+
+    &:checked {
+        background-color: ${({ theme }) => theme.colors.primary};
+        border-color: ${({ theme }) => theme.colors.primary};
+    }
+
+    &:checked::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 6px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
 `;
+
+export const FilterItem = styled.li`
+    display: flex;
+    align-items: center;
+    justify-content: start;
+`
+
+export const FilterTitle = styled.h2`
+    padding: 20px;
+    background: ${(props) => props.theme.colors.primary};
+    color: ${({ theme }) => theme.colors.lightText};
+`

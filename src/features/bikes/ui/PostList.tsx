@@ -15,9 +15,10 @@ import {
     Image,
 } from './post.styled';
 
-const ProductList: React.FC<{ searchTerm: string }> = ({ searchTerm }) => {
+const ProductList: React.FC<{ searchTerm: string; selectedCategories: string[] }> = ({ searchTerm, selectedCategories }) => {
     const dispatch = useAppDispatch();
-    const { bikes, status, error } = useAppSelector((state) => state.bikes);
+    const { bikes, status, error } = useAppSelector((state) => state.bikes) || [];
+
 
     useEffect(() => {
         dispatch(fetchBikes());
@@ -26,9 +27,16 @@ const ProductList: React.FC<{ searchTerm: string }> = ({ searchTerm }) => {
     if (status === 'loading') return <p>Загрузка...</p>;
     if (status === 'failed') return <p>Ошибка: {error}</p>;
 
-    const filteredBikes = bikes.filter((bike) =>
-        bike.name.toLowerCase().includes(searchTerm.toLowerCase()),
+    console.log("Список велосипедов:", bikes);
+    console.log("Выбранные категории:", selectedCategories);
+
+
+    const filteredBikes = (bikes || []).filter((bike) =>
+        bike.name?.toLowerCase().includes(searchTerm.toLowerCase()) &&
+        (selectedCategories.length === 0 || selectedCategories.every(cat => (bike.category || []).includes(cat)))
     );
+
+
 
     return (
         <div>

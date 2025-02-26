@@ -9,6 +9,7 @@ interface Bike {
     discount: number;
     priceWithDiscount: number;
     description: string;
+    category: string[];
 }
 
 interface BikeState {
@@ -52,6 +53,7 @@ const bikeSlice = createSlice({
                 state.status = 'succeeded';
                 state.bikes = action.payload.map((bike: Bike) => ({
                     ...bike,
+                    category: Array.isArray(bike.category) ? bike.category : [], // изменение
                     priceWithDiscount:
                         bike.price - (bike.price / 100) * bike.discount,
                 }));

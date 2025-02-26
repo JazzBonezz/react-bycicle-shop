@@ -7,7 +7,7 @@ import { store } from './providers/store';
 import { Provider } from 'react-redux';
 
 function App() {
-    const isToggleTheme = false;
+    const isToggleTheme = true;
 
     return (
         <Provider store={store}>
