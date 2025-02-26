@@ -1,13 +1,14 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
     max-width: 90dvw;
     height: 400dvh;
-    margin: 0 auto;
+    margin: 1rem auto;
     display: grid;
     grid-template-columns: 3fr 1fr;
-    position: relative; 
-`
+    gap: 1rem;
+    position: relative;
+`;
 
 export const LeftSection = styled.div`
     background: lightgreen;
@@ -15,26 +16,25 @@ export const LeftSection = styled.div`
     position: sticky;
     top: 0;
     align-self: start;
-`
+`;
 
 export const RightSection = styled.section`
-    background: lightpink;
     height: 100%;
-`
+`;
 
 export const FilterSection = styled.div`
-background: lightpink;
-    
-`
+    background: lightpink;
+`;
 
 export const SearchContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    background: blue;
+    background: ${(props) => props.theme.colors.primary};
     padding: 25px 0;
-`
+    border-radius: ${(props) => props.theme.borderRadius.default};
+`;
 
 export const SearchInput = styled.input`
     width: 70%;
@@ -43,11 +43,11 @@ export const SearchInput = styled.input`
     padding: 10px;
     font-size: ${({ theme }) => theme.fontSizes.default};
     border-radius: ${({ theme }) => theme.borderRadius.default};
-    
+
     & :focus {
         border: none;
     }
-`
+`;
 
 export const SearchButton = styled.button`
     height: 40px;
@@ -55,4 +55,4 @@ export const SearchButton = styled.button`
     border-radius: ${({ theme }) => theme.borderRadius.default};
     border: none;
     cursor: pointer;
-`
+`;

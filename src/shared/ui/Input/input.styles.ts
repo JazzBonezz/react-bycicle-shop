@@ -1,17 +1,17 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
-position: relative;
+    position: relative;
     margin-bottom: 26px;
     width: 100%;
-    
+
     & label {
         display: block;
         padding: 0 0 6px 6px;
         font-size: ${({ theme }) => theme.fontSizes.default};
         color: ${({ theme }) => theme.colors.text};
     }
-    
+
     & input {
         width: 100%;
         padding: 12px;
@@ -28,8 +28,7 @@ position: relative;
         font-size: ${({ theme }) => theme.fontSizes.default};
         color: ${({ theme }) => theme.colors.textError};
     }
-    
-`
+`;
 
 export const EyeIcon = styled.button`
     position: absolute;

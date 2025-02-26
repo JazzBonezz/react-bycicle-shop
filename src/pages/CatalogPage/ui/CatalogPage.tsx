@@ -1,25 +1,30 @@
 import {
-    Container, FilterSection,
+    Container,
+    FilterSection,
     LeftSection,
     RightSection,
     SearchButton,
     SearchContainer,
-    SearchInput
-} from "./catalog.styles";
-import {useState} from "react";
-
-
+    SearchInput,
+} from './catalog.styles';
+import { useState } from 'react';
+import ProductList from '../../../features/bikes/ui/PostList';
 
 const CatalogPage = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [searchTerm, setSearchTerm] = useState('');
     return (
         <Container>
             <RightSection>
-
                 <SearchContainer>
-                    <SearchInput/>
-                    <SearchButton>Поиск</SearchButton>
+                    <SearchInput
+                        type="text"
+                        placeholder="Поиск"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
                 </SearchContainer>
+                <ProductList searchTerm={searchTerm}></ProductList>
             </RightSection>
 
             <LeftSection>

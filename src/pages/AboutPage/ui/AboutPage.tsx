@@ -8,8 +8,8 @@ const AboutPage = () => {
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade">
-                </iframe>
+                referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
         </div>
     );
 };

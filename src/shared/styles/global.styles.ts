@@ -1,4 +1,4 @@
-import {createGlobalStyle} from 'styled-components'
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
     * {
@@ -12,6 +12,6 @@ const GlobalStyle = createGlobalStyle`
         background-color: ${(props) => props.theme.colors.background};
         color: ${(props) => props.theme.colors.text};
         height: 100vh;
-    }`
+    }`;
 
 export default GlobalStyle;

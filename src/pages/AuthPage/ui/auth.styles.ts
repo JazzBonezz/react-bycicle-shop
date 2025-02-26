@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
     position: absolute;
@@ -12,14 +12,14 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem;
-`
+`;
 
 export const Title = styled.h1`
     font-size: ${({ theme }) => theme.fontSizes.title};
     @media (max-width: ${(props) => props.theme.breakpoints.phone}) {
-       font-size: ${({ theme }) => theme.fontSizes.titleTablet};
+        font-size: ${({ theme }) => theme.fontSizes.titleTablet};
     }
-`
+`;
 
 export const ButtonContainer = styled.div`
     display: grid;
@@ -30,4 +30,4 @@ export const ButtonContainer = styled.div`
         grid-template-columns: 1fr;
         gap: 1rem;
     }
-`
+`;
