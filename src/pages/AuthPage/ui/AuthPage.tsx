@@ -1,5 +1,6 @@
 import {Outlet, useNavigate} from "react-router";
-import {Container, Title, ButtonContainer, Button} from "./auth.styles";
+import {Container, Title, ButtonContainer } from "./auth.styles";
+import {Button} from  '../../../shared/ui/LoginButton'
 
 const Auth = () => {
     const navigate = useNavigate();

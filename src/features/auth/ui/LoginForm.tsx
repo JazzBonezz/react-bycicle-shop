@@ -6,7 +6,7 @@ import {schema} from "../model/validation";
 import {useDispatch} from "react-redux";
 import {login} from "../../../features/auth/model/authSlice";
 
-import { FaArrowRightLong } from "react-icons/fa6";
+import {Button} from "../../../shared/ui/LoginButton";
 
 const LoginForm = () => {
     const dispatch = useDispatch();
@@ -37,10 +37,8 @@ const LoginForm = () => {
                     id="password"
                     placeholder='Введите пароль'
                     type = 'password'/>
-                <button type="submit" >
-                    Войти <FaArrowRightLong />
-                </button>
-                <p>Нет аккаунта? <Link to='/auth/registration'>Зарегистрироваться</Link></p>
+                    <Button type="submit">Войти</Button>
+                <p>Нет аккаунта? <Link to='/registration'>Зарегистрироваться</Link></p>
             </StyledForm>
 
         </Formik>

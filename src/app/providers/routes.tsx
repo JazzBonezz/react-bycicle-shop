@@ -9,11 +9,11 @@ import {CatalogPage} from "../../pages/CatalogPage";
 import {AuthPage} from "../../pages/AuthPage";
 
 import {useSelector} from "react-redux";
-import {AuthState} from "../../features/auth/model/types";
+import {selectIsAuthenticated} from "../../features/auth/model/authSlice";
 
 const ProtectedRoute = ({children}: { children: JSX.Element }) => {
-    const isAuthenticated = useSelector((state: AuthState) => state.auth.isAuthenticated);
-    return isAuthenticated ? children : <Navigate to="/auth" replace/>;
+    const isAuthorized = useSelector(selectIsAuthenticated);
+    return isAuthorized ? children : <Navigate to="/auth" replace/>;
 };
 
 const routes = createBrowserRouter([
@@ -24,12 +24,12 @@ const routes = createBrowserRouter([
         children: [
             {
                 path: "home",
-                element: <ProtectedRoute> <HomePage/></ProtectedRoute>,
+                element: <ProtectedRoute><HomePage/></ProtectedRoute>,
 
             },
             {
                 path: "/about",
-                element: <ProtectedRoute><AboutPage/> </ProtectedRoute>,
+                element: <ProtectedRoute><AboutPage/></ProtectedRoute>,
             },
             {
                 path: "/catalog",

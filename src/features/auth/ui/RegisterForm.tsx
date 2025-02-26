@@ -5,6 +5,7 @@ import {Link, useNavigate} from "react-router";
 import {schema} from "../model/validation";
 import {useDispatch} from "react-redux";
 import {register} from "../model/authSlice";
+import {Button} from "../../../shared/ui/LoginButton";
 
 const RegisterForm = () => {
     const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const RegisterForm = () => {
             onSubmit={(values, {setSubmitting}) => {
                 dispatch(register({ email: values.email, password: values.password }))
                 setTimeout(() => {
-                    navigate("/auth/login");
+                    navigate("/login");
                     setSubmitting(false);
                 }, 1000)
 
@@ -48,9 +49,9 @@ const RegisterForm = () => {
                     id="confirmPassword"
                     placeholder='Введите пароль повторно'
                     type='password'/>
-                <button type="submit" disabled={isSubmitting}>
+                <Button type="submit" disabled={isSubmitting}>
                     Зарегистрироваться
-                </button>
+                </Button>
                 <p>Уже есть аккаунт? <Link to='/login'>Войти</Link></p>
             </StyledForm>
             )}

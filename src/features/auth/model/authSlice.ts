@@ -1,10 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AuthState } from "./types";
 
+const storedData = localStorage.getItem("userData");
+const parsedData = storedData ? JSON.parse(storedData) : null;
+
 const initialState: AuthState = {
     auth: {
-        email: null,
-        isAuthenticated: false,
+        email: parsedData?.email || null,
+        isAuthenticated: parsedData?.isAuthenticated || false,
     },
 };
 
@@ -17,7 +20,7 @@ const authSlice = createSlice({
             state.auth.email = email;
             state.auth.isAuthenticated = false;
 
-            const userData = { email, password };
+            const userData = { email, password, isAuthenticated: false };
             localStorage.setItem("userData", JSON.stringify(userData));
         },
         login: (state, action: PayloadAction<{ email: string; password: string }>) => {
@@ -31,16 +34,28 @@ const authSlice = createSlice({
                     state.auth.email = email;
                     state.auth.isAuthenticated = true;
                     localStorage.setItem("email", email);
+
+                    localStorage.setItem(
+                        "userData",
+                        JSON.stringify({ ...parsedUser, isAuthenticated: true })
+                    );
                 }
             }
         },
         logout: (state) => {
             state.auth.email = null;
             state.auth.isAuthenticated = false;
-            localStorage.removeItem('email');
+            localStorage.setItem(
+                "userData",
+                JSON.stringify({ email: null, password: null, isAuthenticated: false })
+            );
         },
     },
 });
+
+export const selectIsAuthenticated = (state: { auth: AuthState }) => state.auth.auth.isAuthenticated; // не сам написал
+
+export const userEmail = (state: {auth: AuthState}) => state.auth.auth.email;
 
 export const { register, login, logout } = authSlice.actions;
 export default authSlice.reducer;

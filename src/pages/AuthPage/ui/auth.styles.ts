@@ -16,6 +16,9 @@ export const Container = styled.div`
 
 export const Title = styled.h1`
     font-size: ${({ theme }) => theme.fontSizes.title};
+    @media (max-width: ${(props) => props.theme.breakpoints.phone}) {
+       font-size: ${({ theme }) => theme.fontSizes.titleTablet};
+    }
 `
 
 export const ButtonContainer = styled.div`
@@ -23,12 +26,8 @@ export const ButtonContainer = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     justify-content: space-between;
     gap: 1rem;
-`
-
-export const Button = styled.button`
-    padding: 12px;
-    border: none;
-    background-color: ${({ theme }) => theme.colors.primary};
-    color: ${({ theme }) => theme.colors.lightText};
-    font-size: ${({ theme }) => theme.fontSizes.default};
+    @media (max-width: ${(props) => props.theme.breakpoints.phone}) {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
 `

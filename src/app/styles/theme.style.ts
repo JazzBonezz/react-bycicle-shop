@@ -13,7 +13,22 @@ export const theme = {
     , fontSizes: {
         default: '22px',
         large: '44px',
-        title: '64px'
+        title: '6rem',
+        titleTablet: '3rem',
+
+    },
+    borderRadius: {
+        default: "5px",
+    },
+    shadows: {
+        default:
+            "-webkit-box-shadow: 0px 0px 19px 3px rgba(0,0,0,0.75);" +
+            "-moz-box-shadow: 0px 0px 19px 3px rgba(0,0,0,0.75);" +
+            "box-shadow: 0px 0px 19px 3px rgba(0,0,0,0.75);",
+    },
+    breakpoints: {
+        tablet: '1024px',
+        phone: '768px',
     }
 };
 
