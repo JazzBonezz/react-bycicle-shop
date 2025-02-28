@@ -8,7 +8,7 @@ import {
     ListContainer,
     CenterlSection,
 } from './Navbar.styles';
-import { ReactNode, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
     logout,
@@ -18,17 +18,14 @@ import {
 import { FaUser } from 'react-icons/fa6';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6';
 import { Button } from '../../../shared/ui/LoginButton';
-
-function RightSection(props: { children: ReactNode }) {
-    return null;
-}
+import { useNavigate } from 'react-router';
 
 const Navbar = () => {
     const dispatch = useDispatch();
     const isAuthorized = useSelector(selectIsAuthenticated);
     const email = useSelector(userEmail);
     const [isOpen, setIsOpen] = useState(false);
-
+    const navigate = useNavigate();
     const handleLogout = () => dispatch(logout());
 
     return (
@@ -52,14 +49,21 @@ const Navbar = () => {
                         <FaUser />
                     </NavLink>
                 ) : (
-                    <Button onClick={handleLogout}>Выйти</Button>
+                    <div style={{ display: 'flex', gap: '20px' }}>
+                        <Button
+                            onClick={() => {
+                                navigate('/cart');
+                            }}
+                        >
+                            Корзина{' '}
+                        </Button>
+                        <Button onClick={handleLogout}>Выйти</Button>
+                    </div>
                 )}
             </ListContainer>
             <>
                 <Burger $isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
-                    <Burger $isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
-                        {isOpen ? <FaChevronRight /> : <FaChevronLeft />}
-                    </Burger>
+                    {isOpen ? <FaChevronRight /> : <FaChevronLeft />}
                 </Burger>
                 <BurgerMenu $isOpen={isOpen}>
                     <BurgerMenuContainer>
@@ -89,7 +93,9 @@ const Navbar = () => {
                                 <FaUser />
                             </NavLink>
                         ) : (
-                            <Button onClick={handleLogout}>Выйти</Button>
+                            <div>
+                                <Button onClick={handleLogout}>Выйти</Button>
+                            </div>
                         )}
                     </BurgerMenuContainer>
                 </BurgerMenu>

@@ -3,20 +3,28 @@ import { RouterProvider } from 'react-router';
 import GlobalStyle from '../shared/styles/global.styles';
 import { darkTheme, theme } from './styles/theme.style';
 import { ThemeProvider } from 'styled-components';
-import { store } from './providers/store';
+import { store, persistor } from './providers/store';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { useAppSelector } from './providers/store';
 
 function App() {
-    const isToggleTheme = true;
-
     return (
         <Provider store={store}>
-            <ThemeProvider theme={isToggleTheme ? theme : darkTheme}>
-                <GlobalStyle />
-                <RouterProvider router={routes} />
-            </ThemeProvider>
+            <PersistGate loading={null} persistor={persistor}>
+                <ThemeWrapper />
+            </PersistGate>
         </Provider>
     );
 }
 
+function ThemeWrapper() {
+    const themeToggle = useAppSelector((state) => state.theme.isDark);
+    return (
+        <ThemeProvider theme={themeToggle ? darkTheme : theme}>
+            <GlobalStyle />
+            <RouterProvider router={routes} />
+        </ThemeProvider>
+    );
+}
 export default App;

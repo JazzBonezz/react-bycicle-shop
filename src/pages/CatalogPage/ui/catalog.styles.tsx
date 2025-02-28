@@ -1,13 +1,41 @@
 import styled from 'styled-components';
-
+0;
 export const Container = styled.div`
     max-width: 90dvw;
-    height: fit-content;
-    margin: 1rem auto;
+    margin: 2rem auto;
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 5fr 1fr;
     gap: 1rem;
     position: relative;
+`;
+
+export const RightSection = styled.section`
+    background: ${(props) => props.theme.colors.sectionBackground};
+    border-radius: ${(props) => props.theme.borderRadius.default};
+    box-shadow: ${(props) => props.theme.shadow.default};
+    line-height: 1.8;
+`;
+
+export const SearchContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 5rem;
+    background: ${(props) => props.theme.colors.secondary};
+    border-radius: ${(props) => props.theme.borderRadius.default};
+`;
+
+export const SearchInput = styled.input`
+    width: 100%;
+    height: 50%;
+    border: none;
+    padding: 16px;
+    font-size: ${({ theme }) => theme.fontSizes.default};
+    border-radius: ${({ theme }) => theme.borderRadius.default};
+
+    & :focus {
+        border: none;
+    }
 `;
 
 export const LeftSection = styled.div`
@@ -17,55 +45,68 @@ export const LeftSection = styled.div`
     border-radius: ${(props) => props.theme.borderRadius.default};
 `;
 
-export const RightSection = styled.section`
-    height: 100%;
-    
-`;
-
 export const FilterSection = styled.div`
-    background: ${(props) => props.theme.colors.secondary};
     display: flex;
     flex-direction: column;
     width: 100%;
     text-align: center;
-    
+
+    background: ${(props) => props.theme.colors.sectionBackground};
+    border-radius: ${(props) => props.theme.borderRadius.default};
+    box-shadow: ${(props) => props.theme.shadow.default};
 `;
 
-export const SearchContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+export const FilterTitle = styled.h2`
+    padding: 20px;
     background: ${(props) => props.theme.colors.primary};
-    padding: 25px 0;
+    color: ${({ theme }) => theme.colors.lightText};
     border-radius: ${(props) => props.theme.borderRadius.default};
 `;
 
-export const SearchInput = styled.input`
-    width: 70%;
-    height: 50%;
-    border: none;
+export const FilterButton = styled.button`
     padding: 10px;
+    margin: 0.5rem;
+    background: ${(props) => props.theme.colors.secondary};
+    color: ${({ theme }) => theme.colors.lightText};
     font-size: ${({ theme }) => theme.fontSizes.default};
-    border-radius: ${({ theme }) => theme.borderRadius.default};
+    border-radius: ${(props) => props.theme.borderRadius.default};
+    border: none;
+    cursor: pointer;
 
-    & :focus {
-        border: none;
+    &:hover {
+        opacity: 0.95;
     }
 `;
 
-export const FilterList = styled.ul`
+export const FilterList = styled.ul<{ $isOpen: boolean }>`
     display: flex;
-    margin: 1rem;
     flex-direction: column;
     list-style: none;
     gap: 10px;
-    text-align: left; 
-    overflow: auto;
-    max-height: 300px;
-`
+    text-align: left;
+    overflow-y: auto;
 
-export const Checkbox = styled.input.attrs({ type: "checkbox" })`
+    max-height: ${({ $isOpen }) => ($isOpen ? '300px' : '0')};
+    opacity: ${({ $isOpen }) => ($isOpen ? '1' : '0')};
+    visibility: ${({ $isOpen }) => ($isOpen ? 'visible' : 'hidden')};
+    transform: ${({ $isOpen }) =>
+        $isOpen ? 'translateY(0)' : 'translateY(-10px)'};
+    padding: ${({ $isOpen }) => ($isOpen ? '1rem' : '0')};
+    transition: all 0.3s ease-in-out;
+`;
+
+export const FilterItem = styled.li`
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    padding: 10px;
+
+    &:hover {
+        background-color: #f0f0f0;
+    }
+`;
+
+export const Checkbox = styled.input.attrs({ type: 'checkbox' })`
     appearance: none;
     width: 18px;
     height: 18px;
@@ -81,28 +122,4 @@ export const Checkbox = styled.input.attrs({ type: "checkbox" })`
         background-color: ${({ theme }) => theme.colors.primary};
         border-color: ${({ theme }) => theme.colors.primary};
     }
-
-    &:checked::after {
-        content: "";
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        width: 6px;
-        height: 10px;
-        border: solid white;
-        border-width: 0 2px 2px 0;
-        transform: translate(-50%, -50%) rotate(45deg);
-    }
 `;
-
-export const FilterItem = styled.li`
-    display: flex;
-    align-items: center;
-    justify-content: start;
-`
-
-export const FilterTitle = styled.h2`
-    padding: 20px;
-    background: ${(props) => props.theme.colors.primary};
-    color: ${({ theme }) => theme.colors.lightText};
-`

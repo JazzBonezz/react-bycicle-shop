@@ -11,6 +11,8 @@ import { AuthPage } from '../../pages/AuthPage';
 import { useSelector } from 'react-redux';
 import { selectIsAuthenticated } from '../../features/auth/model/authSlice';
 import { FC } from 'react';
+import CartPage from '../../features/cart/ui/CartPage';
+import PayPage from '../../pages/PayPage/PayPage';
 
 interface Props {
     children: React.ReactNode;
@@ -50,6 +52,14 @@ const routes = createBrowserRouter([
                     </ProtectedRoute>
                 ),
             },
+            {
+                path: '/cart',
+                element: (
+                    <ProtectedRoute>
+                        <CartPage />
+                    </ProtectedRoute>
+                ),
+            },
 
             {
                 path: 'auth',
@@ -63,6 +73,10 @@ const routes = createBrowserRouter([
             {
                 path: 'login',
                 element: <LoginForm />,
+            },
+            {
+                path: 'pay',
+                element: <PayPage />,
             },
         ],
     },

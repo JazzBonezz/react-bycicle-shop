@@ -1,22 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios, { AxiosError } from 'axios';
-
-interface Bike {
-    id: string;
-    name: string;
-    type: string;
-    price: number;
-    discount: number;
-    priceWithDiscount: number;
-    description: string;
-    category: string[];
-}
-
-interface BikeState {
-    bikes: Bike[];
-    status: 'idle' | 'loading' | 'succeeded' | 'failed';
-    error: string | null;
-}
+import { Bike, BikeState } from './types';
 
 const initialState: BikeState = {
     bikes: [],
@@ -54,6 +38,9 @@ const bikeSlice = createSlice({
                 state.bikes = action.payload.map((bike: Bike) => ({
                     ...bike,
                     category: Array.isArray(bike.category) ? bike.category : [], // изменение
+                    // brand: bike.brand,inStock: bike.inStock,
+                    // frameSize: Array.isArray(bike.specifications.frameSize) ? bike.specifications.frameSize : [],
+                    //
                     priceWithDiscount:
                         bike.price - (bike.price / 100) * bike.discount,
                 }));
