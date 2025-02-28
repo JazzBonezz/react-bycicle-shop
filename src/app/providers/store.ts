@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit';
-import authReducer from '../../features/auth/model/authSlice';
 import bikeReducer from '../../features/bikes/model/bikeSlice';
 import cartReducer from '../../pages/CartPage/Model/cartSlice';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
@@ -14,7 +13,6 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-    auth: authReducer,
     bikes: bikeReducer,
     cart: persistReducer(persistConfig, cartReducer),
     theme: themeReducer,

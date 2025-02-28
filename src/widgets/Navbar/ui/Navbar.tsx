@@ -9,24 +9,18 @@ import {
     CenterlSection,
 } from './Navbar.styles';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-    logout,
-    selectIsAuthenticated,
-    userEmail,
-} from '../../../features/auth/model/authSlice';
-import { FaUser } from 'react-icons/fa6';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6';
 import { Button } from '../../../shared/ui/LoginButton';
 import { useNavigate } from 'react-router';
+import { FaCartShopping } from "react-icons/fa6";
+import { IoMoonOutline,IoMoon } from "react-icons/io5";
+import { useAppDispatch } from '../../../app/providers/store';
+import { toggleTheme } from '../../../shared/model/themeSlice';
 
 const Navbar = () => {
-    const dispatch = useDispatch();
-    const isAuthorized = useSelector(selectIsAuthenticated);
-    const email = useSelector(userEmail);
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
-    const handleLogout = () => dispatch(logout());
+    const dispatch = useAppDispatch();
 
     return (
         <Header>
@@ -44,22 +38,22 @@ const Navbar = () => {
                         <span>О нас</span>
                     </NavLinkSecondary>
                 </CenterlSection>
-                {!isAuthorized ? (
-                    <NavLink to={'/auth'}>
-                        <FaUser />
-                    </NavLink>
-                ) : (
+
                     <div style={{ display: 'flex', gap: '20px' }}>
-                        <Button
+                        <Button showIcon={false}
                             onClick={() => {
                                 navigate('/cart');
                             }}
                         >
                             Корзина{' '}
+                            <FaCartShopping />
                         </Button>
-                        <Button onClick={handleLogout}>Выйти</Button>
+
+                        <Button showIcon={false} onClick={() => dispatch(toggleTheme())}>
+                            <IoMoonOutline /> <IoMoon />
+                        </Button>
                     </div>
-                )}
+
             </ListContainer>
             <>
                 <Burger $isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
@@ -68,7 +62,6 @@ const Navbar = () => {
                 <BurgerMenu $isOpen={isOpen}>
                     <BurgerMenuContainer>
                         <NavLink onClick={() => setIsOpen(!isOpen)} to={'/'}>
-                            {email ? email : 'Гость'}
                         </NavLink>
                         <NavLink
                             onClick={() => setIsOpen(!isOpen)}
@@ -88,15 +81,7 @@ const Navbar = () => {
                         >
                             <span>О нас</span>
                         </NavLink>
-                        {!isAuthorized ? (
-                            <NavLink to={'/auth'}>
-                                <FaUser />
-                            </NavLink>
-                        ) : (
-                            <div>
-                                <Button onClick={handleLogout}>Выйти</Button>
-                            </div>
-                        )}
+
                     </BurgerMenuContainer>
                 </BurgerMenu>
             </>
