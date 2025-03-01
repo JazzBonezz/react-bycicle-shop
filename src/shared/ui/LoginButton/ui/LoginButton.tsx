@@ -19,10 +19,11 @@ const LoginButton: FC<LoginButtonProps> = ({
     width = '100%',
     showIcon = true,
 }) => {
+
     return (
         <Button
-            width={width}
-            hasIcon={showIcon}
+            $width={width}
+            $hasIcon={showIcon}
             onClick={onClick}
             type={type}
             disabled={disabled}

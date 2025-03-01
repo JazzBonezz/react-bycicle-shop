@@ -11,7 +11,7 @@ import { Button } from '../../../../shared/ui/LoginButton';
 import { Bike, ProductListProps } from '../../model/types';
 import { FaLongArrowAltUp, FaLongArrowAltDown } from 'react-icons/fa';
 import { FaBan } from 'react-icons/fa6';
-import {SortButton } from './ProductList.styled'
+import { SortButton } from './ProductList.styled';
 
 const ProductList: React.FC<ProductListProps> = (props) => {
     const {
@@ -62,10 +62,7 @@ const ProductList: React.FC<ProductListProps> = (props) => {
         <div>
             <MainTitle>Каталог велосипедов</MainTitle>
 
-            <SortButton
-                onClick={toggleSortOrder}
-                width={'fit-content'}
-            >
+            <SortButton onClick={toggleSortOrder} width={'fit-content'}>
                 Сортировка по цене:{' '}
                 {sortOrder === 'asc' ? (
                     <FaLongArrowAltUp />

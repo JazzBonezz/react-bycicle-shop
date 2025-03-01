@@ -21,10 +21,10 @@ const NavLink = styled(Link)`
 const NavLinkSecondary = styled(Link)`
     color: ${(props) => props.theme.colors.lightText};
     text-decoration: none;
-    position: relative;
-    display: inline-block;
     font-size: 1.8rem;
     padding: 10px 15px;
+    position: relative;
+    display: inline-block;
 
     &::before,
     &::after,
@@ -88,7 +88,7 @@ const NavLinkSecondary = styled(Link)`
     }
 `;
 
-const CenterlSection = styled.ul`
+const CentralSection = styled.div`
     display: flex;
     flex-direction: row;
     gap: 5rem;
@@ -101,7 +101,7 @@ const CenterlSection = styled.ul`
     }
 `;
 
-const Burger = styled.div<{ $isOpen: boolean }>`
+const Burger = styled.button<{ $isOpen: boolean }>`
     width: 50px;
     height: 30px;
     display: none;
@@ -109,7 +109,8 @@ const Burger = styled.div<{ $isOpen: boolean }>`
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    background-color: ${(props) => props.theme.colors.primary};
+    background: none;
+    border: none;
     z-index: 1000;
 
     & svg {
@@ -135,10 +136,9 @@ const BurgerMenu = styled.nav<{ $isOpen: boolean }>`
     gap: 2rem;
     font-size: ${(props) => props.theme.fontSizes.large};
     transition:
-        transform 0.3s ease,
-        opacity 0.3s ease;
-    transform: ${({ $isOpen }) =>
-        $isOpen ? 'translateX(0)' : 'translateX(100%)'};
+            transform 0.3s ease,
+            opacity 0.3s ease;
+    transform: ${({ $isOpen }) => ($isOpen ? 'translateX(0)' : 'translateX(100%)')};
     opacity: ${({ $isOpen }) => ($isOpen ? '1' : '0')};
     pointer-events: ${({ $isOpen }) => ($isOpen ? 'auto' : 'none')};
     z-index: 100;
@@ -157,13 +157,20 @@ const BurgerMenuContainer = styled.div`
 
 const ListContainer = styled.ul``;
 
+const RightSection = styled.div`
+    display: flex;
+    gap: 20px;
+    
+`;
+
 export {
     Header,
     NavLink,
-    CenterlSection,
+    CentralSection,
     NavLinkSecondary,
     Burger,
     BurgerMenu,
     BurgerMenuContainer,
     ListContainer,
+    RightSection
 };

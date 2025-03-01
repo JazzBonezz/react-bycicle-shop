@@ -1,3 +1,4 @@
+// Большую часть кода скопировал с видео UlbiTV про модальные окна
 import React from 'react';
 import { createPortal } from 'react-dom';
 import {

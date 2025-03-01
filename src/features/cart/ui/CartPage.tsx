@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import {
     Container,
-    MainTitle,
     LeftSection,
     RightSection,
     SecondaryTitle,
     ItemList,
+    TotalPrice,
+    SubTotalPrice,
+    PriceSection,
 } from './cart.styled';
 import { Button } from '../../../shared/ui/LoginButton/ui/button.styled';
 import { useAppSelector, useAppDispatch } from '../../../app/providers/store';
@@ -17,7 +19,7 @@ import {
 import { removeFromCart } from '../model/cartSlice';
 import CartItem from './CartItem';
 import Modal from '../../../shared/ui/modal/Modal';
-import { formatPrice } from '../lib/formatPrice';
+import { formatPrice } from '../../../shared/lib/formatPrice';
 import { useNavigate } from 'react-router';
 
 const CartPage = () => {
@@ -37,17 +39,16 @@ const CartPage = () => {
 
     const handleConfirmRemove = () => {
         if (itemToRemove) {
-            dispatch(removeFromCart(itemToRemove)); // ✅ Теперь dispatch объявлен
+            dispatch(removeFromCart(itemToRemove));
         }
         setIsModalOpen(false);
     };
 
     return (
         <>
-            <MainTitle>Корзина</MainTitle>
             <Container>
                 <LeftSection>
-                    <SecondaryTitle>Товары: </SecondaryTitle>
+                    <SecondaryTitle>Корзина: </SecondaryTitle>
                     <ItemList>
                         {cartItems.length > 0 ? (
                             cartItems.map((item) => (
@@ -65,14 +66,16 @@ const CartPage = () => {
 
                 <RightSection>
                     <SecondaryTitle>Сумма: </SecondaryTitle>
-                    <div className="PriceSection">
-                        <p>Подытог (без скидки): {formatPrice(subtotal)}</p>
+                    <PriceSection>
+                        <SubTotalPrice>
+                            Подытог (без скидки): {formatPrice(subtotal)}
+                        </SubTotalPrice>
                         <hr />
-                        <p>
+                        <TotalPrice>
                             Итог (со скидкой):{' '}
                             <strong>{formatPrice(totalWithDiscount)}</strong>
-                        </p>
-                    </div>
+                        </TotalPrice>
+                    </PriceSection>
                     <Button onClick={() => navigate('/pay')}>
                         Перейти к оплате
                     </Button>

@@ -4,13 +4,8 @@ import { AboutPage } from '../../pages/AboutPage';
 import { HomePage } from '../../pages/HomePage';
 import { CatalogPage } from '../../pages/CatalogPage';
 
-
-
 import CartPage from '../../features/cart/ui/CartPage';
-import PayPage from '../../pages/PayPage/PayPage';
-
-
-
+import PayPage from '../../pages/PayPage/ui/PayPage';
 
 const routes = createBrowserRouter([
     {
@@ -19,29 +14,19 @@ const routes = createBrowserRouter([
         children: [
             {
                 path: 'home',
-                element: (
-                        <HomePage />
-                ),
+                element: <HomePage />,
             },
             {
                 path: '/about',
-                element: (
-                        <AboutPage />
-                ),
+                element: <AboutPage />,
             },
             {
                 path: '/catalog',
-                element: (
-                        <CatalogPage />
-                ),
+                element: <CatalogPage />,
             },
             {
                 path: '/cart',
-                element: (
-
-                        <CartPage />
-
-                ),
+                element: <CartPage />,
             },
             {
                 path: 'pay',

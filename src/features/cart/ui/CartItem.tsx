@@ -2,8 +2,9 @@ import React from 'react';
 import { useAppDispatch } from '../../../app/providers/store';
 import { CartItem as CartItemType } from '../model/cartTypes';
 import { increaseQuantity, decreaseQuantity } from '../model/cartSlice';
-import { formatPrice } from '../lib/formatPrice';
-import { Item, ItemButtons } from './item.styled';
+import { formatPrice } from '../../../shared/lib/formatPrice';
+import { Item, ItemButtons, Quantity } from './item.styled';
+import { Button } from '../../../shared/ui/LoginButton/ui/button.styled';
 
 interface Props {
     item: CartItemType;
@@ -19,17 +20,17 @@ const CartItem: React.FC<Props> = ({ item, onOpenModal }) => {
                 {item.name} - {formatPrice(item.price)}
             </span>
             <ItemButtons>
-                <button
+                <Button
                     onClick={() => dispatch(decreaseQuantity(item.id))}
                     disabled={item.quantity === 1}
                 >
                     −
-                </button>
-                <span> {item.quantity} </span>
-                <button onClick={() => dispatch(increaseQuantity(item.id))}>
+                </Button>
+                <Quantity>{item.quantity} </Quantity>
+                <Button onClick={() => dispatch(increaseQuantity(item.id))}>
                     +
-                </button>
-                <button onClick={() => onOpenModal(item.id)}>Удалить</button>
+                </Button>
+                <Button onClick={() => onOpenModal(item.id)}>Удалить</Button>
             </ItemButtons>
         </Item>
     );

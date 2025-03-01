@@ -35,8 +35,8 @@ export const theme = {
 
 export const darkTheme = {
     colors: {
-        primary: '#8A79FF',
-        secondary: '#B58DFF',
+        primary: '#111827',
+        secondary: '#5a8ece',
         tertiary: '#FFD166',
         background: 'linear-gradient(135deg, #121212, #1E1E2E)',
         text: '#EAEAEA',
@@ -44,7 +44,7 @@ export const darkTheme = {
         textError: '#FF6B6B',
         border: '1px solid #2A2A3A',
 
-        sectionBackground: 'rgba(40, 40, 50, 0.8)',
+        sectionBackground: 'rgb(55,65,81, 0.8)',
     },
     fonts: {
         main: 'Arial, sans-serif',
@@ -67,6 +67,5 @@ export const darkTheme = {
         phone: '768px',
     },
 };
-
 
 export type ThemeType = typeof theme;
