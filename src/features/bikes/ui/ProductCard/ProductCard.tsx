@@ -9,7 +9,7 @@ import {
     RightSection,
     Title,
     Image,
-} from './ProductCard.styled';
+} from './styles';
 import bicycleImage from '../../../../shared/assets/images/bycicle.jpg';
 import { useAppDispatch } from '../../../../app/providers/store';
 import { addToCart } from '../../../../pages/CartPage/Model/cartSlice';

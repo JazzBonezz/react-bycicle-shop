@@ -8,8 +8,8 @@ import {
     TotalPrice,
     SubTotalPrice,
     PriceSection,
-} from './cart.styled';
-import { Button } from '../../../shared/ui/LoginButton/ui/button.styled';
+} from './styles';
+import { Button } from '../../../shared/ui/CustomButton/ui/styles';
 import { useAppSelector, useAppDispatch } from '../../../app/providers/store';
 import {
     selectCartItems,

@@ -1,4 +1,4 @@
-import { Button } from './button.styled';
+import { Button } from './styles';
 import { FC } from 'react';
 import { FaArrowRightLong } from 'react-icons/fa6';
 
@@ -11,7 +11,7 @@ interface LoginButtonProps {
     showIcon?: boolean;
 }
 
-const LoginButton: FC<LoginButtonProps> = ({
+const CustomButton: FC<LoginButtonProps> = ({
     children,
     onClick,
     type = 'button',
@@ -32,4 +32,4 @@ const LoginButton: FC<LoginButtonProps> = ({
     );
 };
 
-export default LoginButton;
+export default CustomButton;

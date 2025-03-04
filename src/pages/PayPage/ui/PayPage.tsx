@@ -1,11 +1,11 @@
-import { Container, Line, SecondSection, TotalPrice } from './pay.styled';
+import { Container, Line, SecondSection, TotalPrice } from './styles';
 import React, { useState } from 'react';
 import { useAppSelector } from '../../../app/providers/store';
 import { selectCartTotalWithDiscount } from '../../../features/cart/model/cartSelectors';
 import { formatPrice } from '../../../shared/lib/formatPrice';
 import { Formik } from 'formik';
 import { useNavigate } from 'react-router';
-import { Button } from '../../../shared/ui/LoginButton/';
+import { Button } from '../../../shared/ui/CustomButton/';
 import PayForm from '../../../features/payment/ui/PayForm';
 import DeliverySelection from '../../../features/payment/ui/DeliverySelection';
 import PaymentSelection from '../../../features/payment/ui/PaymentSelection';

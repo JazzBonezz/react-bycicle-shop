@@ -10,7 +10,7 @@ import { MainTitle } from '../../../../shared/ui/MainTitle/MainTitle';
 import { Bike, ProductListProps } from '../../model/types';
 import { FaLongArrowAltUp, FaLongArrowAltDown } from 'react-icons/fa';
 import { FaBan } from 'react-icons/fa6';
-import { SortButton } from './ProductList.styled';
+import { SortButton } from './styles';
 
 const ProductList: React.FC<ProductListProps> = (props) => {
     const {

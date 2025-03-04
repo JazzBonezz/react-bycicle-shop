@@ -8,10 +8,10 @@ import {
     ListContainer,
     CentralSection,
     RightSection,
-} from './Navbar.styles';
+} from './styles';
 import { useState } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6';
-import { Button } from '../../../shared/ui/LoginButton';
+import { Button } from '../../../shared/ui/CustomButton';
 import { useNavigate } from 'react-router';
 import { FaCartShopping } from 'react-icons/fa6';
 import { IoMoonOutline, IoMoon } from 'react-icons/io5';

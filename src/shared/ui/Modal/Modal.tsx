@@ -7,7 +7,7 @@ import {
     CloseButton,
     ButtonWrapper,
     Button,
-} from './modal.styled';
+} from './styles';
 
 interface ModalProps {
     isOpen: boolean;

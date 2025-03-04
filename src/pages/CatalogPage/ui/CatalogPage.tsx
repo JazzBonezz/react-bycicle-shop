@@ -12,7 +12,7 @@ import {
     Checkbox,
     FilterTitle,
     FilterButton,
-} from './catalog.styles';
+} from './styles';
 import { useAppSelector } from '../../../app/providers/store';
 
 const CatalogPage: React.FC = () => {
