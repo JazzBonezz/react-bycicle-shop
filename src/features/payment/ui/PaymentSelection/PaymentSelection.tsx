@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { PayPageButton, Delivery } from './styles';
-import { activeButtons } from '../model/types';
+import { activeButtons } from '../../model/types';
 
 const PaymentSelection: FC<activeButtons> = ({ active, setActive }) => {
     return (

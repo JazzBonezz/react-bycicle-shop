@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { FaTruckPickup } from 'react-icons/fa6';
 import { TbTruckDelivery } from 'react-icons/tb';
-import Icon from '../../../shared/assets/images/pochta-rossii.svg';
+import Icon from '../../../../shared/assets/images/pochta-rossii.svg';
 import { Delivery, PayPageButton } from './styles';
-import { activeButtons } from '../model/types';
+import { activeButtons } from '../../model/types';
 
 const DeliverySelection: FC<activeButtons> = ({ active, setActive }) => {
     return (

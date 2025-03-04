@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { ErrorMessage } from 'formik';
 
 import { FirstSection, Input, ErrorText } from './styles';
-import { InputFieldProps } from '../model/types';
+import { InputFieldProps } from '../../model/types';
 
 const fields = [
     { name: 'firstName', placeholder: 'Имя' },

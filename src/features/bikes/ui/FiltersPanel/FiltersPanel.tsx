@@ -29,22 +29,22 @@ interface FiltersPanelProps {
 }
 
 const FiltersPanel: React.FC<FiltersPanelProps> = ({
-                                                       categories,
-                                                       brands,
-                                                       frameSizes,
-                                                       selectedCategory,
-                                                       selectedBrands,
-                                                       selectedFrameSizes,
-                                                       filterInStock,
-                                                       priceRange,
-                                                       openFilters,
-                                                       handleCategoryChange,
-                                                       handleBrandChange,
-                                                       handleFrameSizeChange,
-                                                       toggleFilter,
-                                                       setFilterInStock,
-                                                       setPriceRange,
-                                                   }) => {
+    categories,
+    brands,
+    frameSizes,
+    selectedCategory,
+    selectedBrands,
+    selectedFrameSizes,
+    filterInStock,
+    priceRange,
+    openFilters,
+    handleCategoryChange,
+    handleBrandChange,
+    handleFrameSizeChange,
+    toggleFilter,
+    setFilterInStock,
+    setPriceRange,
+}) => {
     return (
         <FilterSection>
             <FilterTitle>Фильтры</FilterTitle>

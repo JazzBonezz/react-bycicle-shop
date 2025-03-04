@@ -6,7 +6,10 @@ interface SearchInputProps {
     setSearchTerm: (value: string) => void;
 }
 
-const SearchInput: React.FC<SearchInputProps> = ({ searchTerm, setSearchTerm }) => {
+const SearchInput: React.FC<SearchInputProps> = ({
+    searchTerm,
+    setSearchTerm,
+}) => {
     return (
         <SearchContainer>
             <StyledInput

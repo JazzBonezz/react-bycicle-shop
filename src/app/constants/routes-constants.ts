@@ -5,4 +5,4 @@ export const ROUTES = {
     CATALOG: '/catalog',
     CART: '/cart',
     PAYMENT: '/pay',
-}
+};

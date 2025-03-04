@@ -1,66 +1,37 @@
-import { Container, Line, SecondSection, TotalPrice } from './styles';
 import React, { useState } from 'react';
-import { useAppSelector } from '../../../app/providers/store';
-import { selectCartTotalWithDiscount } from '../../../features/cart/model/cartSelectors';
-import { formatPrice } from '../../../shared/lib/formatPrice';
 import { Formik } from 'formik';
-import { useNavigate } from 'react-router';
-import { Button } from '../../../shared/ui/CustomButton/';
-import PayForm from '../../../features/payment/ui/PayForm';
-import DeliverySelection from '../../../features/payment/ui/DeliverySelection';
-import PaymentSelection from '../../../features/payment/ui/PaymentSelection';
+import { Container } from './styles';
 import { validationSchema } from '../../../features/payment/model/validation';
+import { initialPaymentValues } from '../../../features/payment/model/constants';
+import {
+    usePaymentForm,
+    useTotalPrice,
+} from '../../../features/payment/model/hooks';
+import {PayForm, PaymentDetails} from "../../../features/payment";
 
 const PayPage = () => {
     const [activeDelivery, setActiveDelivery] = useState<string | null>(null);
     const [activePayment, setActivePayment] = useState<string | null>(null);
-    const totalWithDiscount = useAppSelector(selectCartTotalWithDiscount);
-    const navigate = useNavigate();
+    const totalWithDiscount = useTotalPrice();
+    const { handleSubmit } = usePaymentForm();
+
     return (
         <Formik
-            initialValues={{
-                firstName: '',
-                lastName: '',
-                middleName: '',
-                email: '',
-                phone: '',
-                address: '',
-            }}
+            initialValues={initialPaymentValues}
             validationSchema={validationSchema}
-            onSubmit={(values, { setSubmitting }) => {
-                console.log('Отправленные данные:', values);
-                setSubmitting(false);
-                navigate('/home');
-            }}
+            onSubmit={handleSubmit}
         >
             {({ handleSubmit, isSubmitting }) => (
                 <Container onSubmit={handleSubmit}>
                     <PayForm />
-                    <SecondSection>
-                        <DeliverySelection
-                            active={activeDelivery}
-                            setActive={setActiveDelivery}
-                        />
-
-                        <Line />
-                        <PaymentSelection
-                            active={activePayment}
-                            setActive={setActivePayment}
-                        />
-
-                        <Line />
-
-                        <TotalPrice>
-                            К оплате:{' '}
-                            <strong>{formatPrice(totalWithDiscount)}</strong>
-                        </TotalPrice>
-
-                        <Line />
-
-                        <Button type="submit" disabled={isSubmitting}>
-                            Оплатить
-                        </Button>
-                    </SecondSection>
+                    <PaymentDetails
+                        activeDelivery={activeDelivery}
+                        setActiveDelivery={setActiveDelivery}
+                        activePayment={activePayment}
+                        setActivePayment={setActivePayment}
+                        totalWithDiscount={totalWithDiscount}
+                        isSubmitting={isSubmitting}
+                    />
                 </Container>
             )}
         </Formik>

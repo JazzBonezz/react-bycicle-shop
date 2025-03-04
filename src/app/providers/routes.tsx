@@ -3,7 +3,7 @@ import { MainPage } from '../../pages/MainPage';
 import { AboutPage } from '../../pages/AboutPage';
 import { HomePage } from '../../pages/HomePage';
 import { CatalogPage } from '../../pages/CatalogPage';
-import { ROUTES } from '../constants/routes-constants'
+import { ROUTES } from '../constants/routes-constants';
 import CartPage from '../../pages/CartPage/';
 import PayPage from '../../pages/PayPage';
 

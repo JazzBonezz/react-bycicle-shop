@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import ProductList from '../../../features/bikes/ui/ProductList/ProductList';
-import {
-    Container,
-    LeftSection,
-    RightSection,
-} from './styles';
+import { Container, LeftSection, RightSection } from './styles';
 import { useAppSelector } from '../../../app/providers/store';
-import { useBrands, useCategories, useFrameSizes } from '../../../features/bikes/model/selectors';
+import {
+    useBrands,
+    useCategories,
+    useFrameSizes,
+} from '../../../features/bikes/model/selectors';
 import { useFilters } from '../../../features/bikes/model/filters';
 import FiltersPanel from '../../../features/bikes/ui/FiltersPanel/FiltersPanel';
 import SearchInput from '../../../features/bikes/ui/SearchInput/SearchInput';
@@ -22,7 +22,10 @@ const CatalogPage: React.FC = () => {
     return (
         <Container>
             <RightSection>
-                <SearchInput searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+                <SearchInput
+                    searchTerm={searchTerm}
+                    setSearchTerm={setSearchTerm}
+                />
                 <ProductList
                     searchTerm={searchTerm}
                     selectedCategories={filters.selectedCategory}

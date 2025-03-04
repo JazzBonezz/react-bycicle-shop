@@ -45,7 +45,7 @@ export const FilterList = styled.ul<{ $isOpen: boolean }>`
     opacity: ${({ $isOpen }) => ($isOpen ? '1' : '0')};
     visibility: ${({ $isOpen }) => ($isOpen ? 'visible' : 'hidden')};
     transform: ${({ $isOpen }) =>
-    $isOpen ? 'translateY(0)' : 'translateY(-10px)'};
+        $isOpen ? 'translateY(0)' : 'translateY(-10px)'};
     padding: ${({ $isOpen }) => ($isOpen ? '1rem' : '0')};
     transition: all 0.3s ease-in-out;
 `;
