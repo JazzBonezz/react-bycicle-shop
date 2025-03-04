@@ -18,7 +18,7 @@ import {
 } from '../../../features/cart/model/cartSelectors';
 import { removeFromCart } from '../../../features/cart/model/cartSlice';
 import CartItem from '../../../features/cart/ui/CartItem';
-import Modal from '@/shared/ui/Modal/Modal';
+import Modal from '../../../shared/ui/Modal/Modal';
 import { formatPrice } from '../../../shared/lib/formatPrice';
 import { useNavigate } from 'react-router';
 
