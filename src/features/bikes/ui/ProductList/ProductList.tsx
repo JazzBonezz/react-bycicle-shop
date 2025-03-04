@@ -7,7 +7,6 @@ import {
 import ProductCard from '../ProductCard/ProductCard';
 import { useFilteredBikes } from '../../model/hooks';
 import { MainTitle } from '../../../../shared/ui/MainTitle/MainTitle';
-import { Button } from '../../../../shared/ui/LoginButton';
 import { Bike, ProductListProps } from '../../model/types';
 import { FaLongArrowAltUp, FaLongArrowAltDown } from 'react-icons/fa';
 import { FaBan } from 'react-icons/fa6';
@@ -62,12 +61,16 @@ const ProductList: React.FC<ProductListProps> = (props) => {
         <div>
             <MainTitle>Каталог велосипедов</MainTitle>
 
-            <SortButton onClick={toggleSortOrder} width={'fit-content'}>
+            <SortButton
+                onClick={toggleSortOrder}
+                width={'fit-content'}
+                showIcon={false}
+            >
                 Сортировка по цене:{' '}
                 {sortOrder === 'asc' ? (
-                    <FaLongArrowAltUp />
-                ) : sortOrder === 'desc' ? (
                     <FaLongArrowAltDown />
+                ) : sortOrder === 'desc' ? (
+                    <FaLongArrowAltUp />
                 ) : (
                     <FaBan />
                 )}

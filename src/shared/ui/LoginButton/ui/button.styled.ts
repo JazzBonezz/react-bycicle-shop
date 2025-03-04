@@ -29,7 +29,7 @@ export const Button = styled.button<{ $width?: string; $hasIcon?: boolean }>`
 
     & > svg {
         transition: ${({ $hasIcon }) =>
-                $hasIcon ? 'transform 0.3s ease' : 'none'};
+            $hasIcon ? 'transform 0.3s ease' : 'none'};
     }
 
     &:hover {
@@ -37,7 +37,7 @@ export const Button = styled.button<{ $width?: string; $hasIcon?: boolean }>`
 
         & > svg {
             transform: ${({ $hasIcon }) =>
-                    $hasIcon ? 'translateX(5px)' : 'none'};
+                $hasIcon ? 'translateX(5px)' : 'none'};
         }
     }
 `;

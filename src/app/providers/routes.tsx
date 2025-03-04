@@ -4,8 +4,8 @@ import { AboutPage } from '../../pages/AboutPage';
 import { HomePage } from '../../pages/HomePage';
 import { CatalogPage } from '../../pages/CatalogPage';
 
-import CartPage from '../../features/cart/ui/CartPage';
-import PayPage from '../../pages/PayPage/ui/PayPage';
+import CartPage from '../../pages/CartPage/';
+import PayPage from '../../pages/PayPage';
 
 const routes = createBrowserRouter([
     {

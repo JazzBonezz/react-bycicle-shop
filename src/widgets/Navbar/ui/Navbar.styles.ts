@@ -136,9 +136,10 @@ const BurgerMenu = styled.nav<{ $isOpen: boolean }>`
     gap: 2rem;
     font-size: ${(props) => props.theme.fontSizes.large};
     transition:
-            transform 0.3s ease,
-            opacity 0.3s ease;
-    transform: ${({ $isOpen }) => ($isOpen ? 'translateX(0)' : 'translateX(100%)')};
+        transform 0.3s ease,
+        opacity 0.3s ease;
+    transform: ${({ $isOpen }) =>
+        $isOpen ? 'translateX(0)' : 'translateX(100%)'};
     opacity: ${({ $isOpen }) => ($isOpen ? '1' : '0')};
     pointer-events: ${({ $isOpen }) => ($isOpen ? 'auto' : 'none')};
     z-index: 100;
@@ -160,7 +161,6 @@ const ListContainer = styled.ul``;
 const RightSection = styled.div`
     display: flex;
     gap: 20px;
-    
 `;
 
 export {
@@ -172,5 +172,5 @@ export {
     BurgerMenu,
     BurgerMenuContainer,
     ListContainer,
-    RightSection
+    RightSection,
 };

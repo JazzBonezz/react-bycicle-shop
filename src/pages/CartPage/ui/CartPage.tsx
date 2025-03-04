@@ -15,10 +15,10 @@ import {
     selectCartItems,
     selectCartSubtotal,
     selectCartTotalWithDiscount,
-} from '../model/cartSelectors';
-import { removeFromCart } from '../model/cartSlice';
-import CartItem from './CartItem';
-import Modal from '../../../shared/ui/modal/Modal';
+} from '../../../features/cart/model/cartSelectors';
+import { removeFromCart } from '../../../features/cart/model/cartSlice';
+import CartItem from '../../../features/cart/ui/CartItem';
+import Modal from '@/shared/ui/Modal/Modal';
 import { formatPrice } from '../../../shared/lib/formatPrice';
 import { useNavigate } from 'react-router';
 

@@ -7,7 +7,7 @@ import {
     BurgerMenuContainer,
     ListContainer,
     CentralSection,
-    RightSection
+    RightSection,
 } from './Navbar.styles';
 import { useState } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6';
@@ -31,17 +31,29 @@ const Navbar = () => {
             <nav>
                 <ListContainer>
                     <CentralSection>
-                        <NavLinkSecondary to={'/home'}><span>Главная</span></NavLinkSecondary>
-                        <NavLinkSecondary to={'/catalog'}><span>Каталог</span></NavLinkSecondary>
-                        <NavLinkSecondary to={'/about'}><span>О нас</span></NavLinkSecondary>
+                        <NavLinkSecondary to={'/home'}>
+                            <span>Главная</span>
+                        </NavLinkSecondary>
+                        <NavLinkSecondary to={'/catalog'}>
+                            <span>Каталог</span>
+                        </NavLinkSecondary>
+                        <NavLinkSecondary to={'/about'}>
+                            <span>О нас</span>
+                        </NavLinkSecondary>
                     </CentralSection>
 
                     <RightSection>
-                        <Button showIcon={false} onClick={() => navigate('/cart')}>
+                        <Button
+                            showIcon={false}
+                            onClick={() => navigate('/cart')}
+                        >
                             Корзина <FaCartShopping />
                         </Button>
 
-                        <Button showIcon={false} onClick={() => dispatch(toggleTheme())}>
+                        <Button
+                            showIcon={false}
+                            onClick={() => dispatch(toggleTheme())}
+                        >
                             {themeToggle ? <IoMoon /> : <IoMoonOutline />}
                         </Button>
                     </RightSection>
@@ -62,7 +74,10 @@ const Navbar = () => {
                         <NavLink onClick={() => setIsOpen(false)} to={'/home'}>
                             Главная
                         </NavLink>
-                        <NavLink onClick={() => setIsOpen(false)} to={'/catalog'}>
+                        <NavLink
+                            onClick={() => setIsOpen(false)}
+                            to={'/catalog'}
+                        >
                             Каталог
                         </NavLink>
                         <NavLink onClick={() => setIsOpen(false)} to={'/about'}>

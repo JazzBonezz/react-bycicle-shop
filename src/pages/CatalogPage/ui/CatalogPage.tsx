@@ -26,7 +26,7 @@ const CatalogPage: React.FC = () => {
     const [openFilters, setOpenFilters] = useState<Set<string>>(new Set());
     const [priceRange, setPriceRange] = useState<{ min: number; max: number }>({
         min: 0,
-        max: 100000,
+        max: 1000000,
     });
 
     const categories = useMemo(() => {

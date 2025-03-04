@@ -19,7 +19,6 @@ const LoginButton: FC<LoginButtonProps> = ({
     width = '100%',
     showIcon = true,
 }) => {
-
     return (
         <Button
             $width={width}
