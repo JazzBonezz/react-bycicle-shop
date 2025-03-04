@@ -1,21 +1,22 @@
-import { configureStore } from '@reduxjs/toolkit';
-import bikeReducer from '../../features/bikes/model/bikeSlice';
-import cartReducer from '../../features/cart/model/cartSlice';
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import { combineReducers } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import themeReducer from '../../shared/model/themeSlice';
+
+import bikeReducer from '../../features/bikes/model/bikeSlice';
+import cartReducer from '../../features/cart/model/cartSlice';
+import themeReducer from '../../features/theme-toggle/model/themeSlice';
 
 const persistConfig = {
     key: 'root',
     storage,
+    //whitelist: ['theme', 'cart'], При добавлении это строки persist не рабоатет. Почему так?
 };
 
 const rootReducer = combineReducers({
     bikes: bikeReducer,
     cart: persistReducer(persistConfig, cartReducer),
-    theme: themeReducer,
+    theme: persistReducer(persistConfig, themeReducer),
 });
 
 export const store = configureStore({
