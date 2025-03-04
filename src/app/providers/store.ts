@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import bikeReducer from '../../features/bikes/model/bikeSlice';
-import cartReducer from '../../pages/CartPage/Model/cartSlice';
+import cartReducer from '../../features/cart/model/cartSlice';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { combineReducers } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';

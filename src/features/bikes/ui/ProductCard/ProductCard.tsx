@@ -12,7 +12,7 @@ import {
 } from './styles';
 import bicycleImage from '../../../../shared/assets/images/bycicle.jpg';
 import { useAppDispatch } from '../../../../app/providers/store';
-import { addToCart } from '../../../../pages/CartPage/Model/cartSlice';
+import { addToCart } from '../../../../features/cart/model/cartSlice';
 import { Bike } from '../../model/types';
 
 interface ProductCardProps {

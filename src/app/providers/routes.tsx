@@ -9,11 +9,11 @@ import PayPage from '../../pages/PayPage';
 
 const routes = createBrowserRouter([
     {
-        path: '/',
+        path: ROUTES.HOME,
         element: <MainPage />,
         children: [
             {
-                path: ROUTES.HOME,
+                path: ROUTES.HOME_PAGE,
                 element: <HomePage />,
             },
             {

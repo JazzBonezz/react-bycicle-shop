@@ -13,7 +13,6 @@ interface Props {
 
 const CartItem: React.FC<Props> = ({ item, onOpenModal }) => {
     const dispatch = useAppDispatch();
-
     return (
         <Item>
             <span>

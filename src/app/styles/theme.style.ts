@@ -11,9 +11,6 @@ export const theme = {
 
         sectionBackground: 'rgba(255, 255, 255, 0.7)',
     },
-    fonts: {
-        main: 'Arial, sans-serif',
-    },
     fontSizes: {
         default: '22px',
         large: '44px',
@@ -45,9 +42,6 @@ export const darkTheme = {
         border: '1px solid #2A2A3A',
 
         sectionBackground: 'rgb(55,65,81, 0.8)',
-    },
-    fonts: {
-        main: 'Arial, sans-serif',
     },
     fontSizes: {
         default: '22px',
