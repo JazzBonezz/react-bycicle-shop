@@ -48,22 +48,6 @@ export const SecondaryTitle = styled.h2`
     margin: 1rem 0;
 `;
 
-// export const CouponSection = styled.form`
-//     display: flex;
-//     flex-direction: column;
-// `;
-//
-// export const Input = styled.input`
-//     width: 100%;
-//     height: 3rem;
-//     border: none;
-//     padding: 0 1rem;
-//     font-size: 1rem;
-//     &:focus {
-//         outline: none;
-//         border: none;
-//     }
-// `;
 
 export const ItemList = styled.ul`
     width: 100%;

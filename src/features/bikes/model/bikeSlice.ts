@@ -37,7 +37,7 @@ const bikeSlice = createSlice({
                 state.status = 'succeeded';
                 state.bikes = action.payload.map((bike: Bike) => ({
                     ...bike,
-                    category: Array.isArray(bike.category) ? bike.category : [], // изменение
+                    category: Array.isArray(bike.category) ? bike.category : [],
                     // brand: bike.brand,inStock: bike.inStock,
                     // frameSize: Array.isArray(bike.specifications.frameSize) ? bike.specifications.frameSize : [],
                     //
