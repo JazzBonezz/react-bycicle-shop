@@ -1,15 +1,5 @@
 import React, { useState } from 'react';
-import {
-    Container,
-    LeftSection,
-    RightSection,
-    SecondaryTitle,
-    ItemList,
-    TotalPrice,
-    SubTotalPrice,
-    PriceSection,
-} from './styles';
-import { Button } from '../../../shared/ui/CustomButton/ui/styles';
+import { Container, LeftSection, RightSection } from './styles';
 import { useAppSelector, useAppDispatch } from '../../../app/providers/store';
 import {
     selectCartItems,
@@ -17,17 +7,15 @@ import {
     selectCartTotalWithDiscount,
 } from '../../../features/cart/model/cartSelectors';
 import { removeFromCart } from '../../../features/cart/model/cartSlice';
-import CartItem from '../../../features/cart/ui/CartItem';
 import Modal from '../../../shared/ui/Modal/Modal';
-import { formatPrice } from '../../../shared/lib/formatPrice';
-import { useNavigate } from 'react-router';
+import CartList from '../../../features/cart/ui/CartList/CartList';
+import CartSummary from '../../../features/cart/ui/CartSummary/CartSummary';
 
 const CartPage = () => {
     const dispatch = useAppDispatch();
     const cartItems = useAppSelector(selectCartItems);
     const subtotal = useAppSelector(selectCartSubtotal);
     const totalWithDiscount = useAppSelector(selectCartTotalWithDiscount);
-    const navigate = useNavigate();
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [itemToRemove, setItemToRemove] = useState<string | null>(null);
@@ -48,37 +36,11 @@ const CartPage = () => {
         <>
             <Container>
                 <LeftSection>
-                    <SecondaryTitle>Корзина: </SecondaryTitle>
-                    <ItemList>
-                        {cartItems.length > 0 ? (
-                            cartItems.map((item) => (
-                                <CartItem
-                                    key={item.id}
-                                    item={item}
-                                    onOpenModal={handleOpenModal}
-                                />
-                            ))
-                        ) : (
-                            <p>Корзина пуста</p>
-                        )}
-                    </ItemList>
+                    <CartList cartItems={cartItems} onOpenModal={handleOpenModal} />
                 </LeftSection>
 
                 <RightSection>
-                    <SecondaryTitle>Сумма: </SecondaryTitle>
-                    <PriceSection>
-                        <SubTotalPrice>
-                            Подытог (без скидки): {formatPrice(subtotal)}
-                        </SubTotalPrice>
-                        <hr />
-                        <TotalPrice>
-                            Итог (со скидкой):{' '}
-                            <strong>{formatPrice(totalWithDiscount)}</strong>
-                        </TotalPrice>
-                    </PriceSection>
-                    <Button onClick={() => navigate('/pay')}>
-                        Перейти к оплате
-                    </Button>
+                    <CartSummary subtotal={subtotal} totalWithDiscount={totalWithDiscount} />
                 </RightSection>
             </Container>
 
