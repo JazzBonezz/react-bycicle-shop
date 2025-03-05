@@ -1,7 +1,7 @@
 // Не придумал чем заполнить
 
 import { useAppDispatch } from '../../../app/providers/store';
-import { toggleTheme } from '../../../features/theme-toggle/model/themeSlice';
+import { toggleTheme } from '../../../entities/theme-toggle/model/themeSlice';
 
 const HomePage = () => {
     const dispatch = useAppDispatch();

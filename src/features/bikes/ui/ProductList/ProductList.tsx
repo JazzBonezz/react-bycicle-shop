@@ -6,7 +6,7 @@ import {
 } from '../../../../app/providers/store';
 import ProductCard from '../ProductCard/ProductCard';
 import { useFilteredBikes } from '../../model/hooks';
-import { MainTitle } from '../../../../shared/ui/MainTitle/MainTitle';
+import { MainTitle } from '../../../../shared/components/MainTitle/MainTitle';
 import { Bike, ProductListProps } from '../../model/types';
 import { FaLongArrowAltUp, FaLongArrowAltDown } from 'react-icons/fa';
 import { FaBan } from 'react-icons/fa6';

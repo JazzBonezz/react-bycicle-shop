@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Button } from '../../../../shared/ui/CustomButton/';
+import { Button } from '../../../../shared/components/CustomButton/';
 
 export const SortButton = styled(Button)`
     padding: 10px;

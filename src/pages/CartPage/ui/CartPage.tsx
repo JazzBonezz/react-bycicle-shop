@@ -7,7 +7,7 @@ import {
     selectCartTotalWithDiscount,
 } from '../../../features/cart/model/cartSelectors';
 import { removeFromCart } from '../../../features/cart/model/cartSlice';
-import Modal from '../../../shared/ui/Modal/Modal';
+import Modal from '../../../shared/components/Modal/Modal';
 import CartList from '../../../features/cart/ui/CartList/CartList';
 import CartSummary from '../../../features/cart/ui/CartSummary/CartSummary';
 

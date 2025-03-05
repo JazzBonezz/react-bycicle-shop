@@ -1,6 +1,6 @@
 import { SecondaryTitle, TotalPrice, SubTotalPrice, PriceSection } from './styles';
-import { Button } from '../../../../shared/ui/CustomButton/ui/styles';
-import { formatPrice } from '../../../../shared/lib/formatPrice';
+import { Button } from '../../../../shared/components/CustomButton/ui/styles';
+import { formatPrice } from '../../../../shared/Helpers/formatPrice';
 import { useNavigate } from 'react-router';
 
 interface CartSummaryProps {

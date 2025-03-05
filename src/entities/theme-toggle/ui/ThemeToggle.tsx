@@ -1,4 +1,4 @@
-import { Button } from '../../../shared/ui/CustomButton';
+import { Button } from '../../../shared/components/CustomButton';
 import { IoMoonOutline, IoMoon } from 'react-icons/io5';
 import { useAppDispatch, useAppSelector } from '../../../app/providers/store';
 import { toggleTheme } from '../model/themeSlice';

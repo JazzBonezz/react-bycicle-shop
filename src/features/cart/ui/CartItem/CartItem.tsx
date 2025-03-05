@@ -2,9 +2,9 @@ import React from 'react';
 import { useAppDispatch } from '../../../../app/providers/store';
 import { CartItem as CartItemType } from '../../model/cartTypes';
 import { increaseQuantity, decreaseQuantity } from '../../model/cartSlice';
-import { formatPrice } from '../../../../shared/lib/formatPrice';
+import { formatPrice } from '../../../../shared/Helpers/formatPrice';
 import { Item, ItemButtons, Quantity } from './styles';
-import { Button } from '../../../../shared/ui/CustomButton/ui/styles';
+import { Button } from '../../../../shared/components/CustomButton/ui/styles';
 
 interface Props {
     item: CartItemType;

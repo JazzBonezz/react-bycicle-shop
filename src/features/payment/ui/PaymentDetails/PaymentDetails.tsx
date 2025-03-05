@@ -1,9 +1,9 @@
 import React from 'react';
 import { Line, SecondSection, TotalPrice } from './styles';
-import { formatPrice } from '../../../../shared/lib/formatPrice';
+import { formatPrice } from '../../../../shared/Helpers/formatPrice';
 import DeliverySelection from '../DeliverySelection/DeliverySelection';
 import PaymentSelection from '../PaymentSelection/PaymentSelection';
-import { Button } from '../../../../shared/ui/CustomButton/';
+import { Button } from '../../../../shared/components/CustomButton/';
 import {PaymentDetailsProps} from '../../model/types'
 
 const PaymentDetails: React.FC<PaymentDetailsProps> = ({

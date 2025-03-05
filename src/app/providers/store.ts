@@ -5,7 +5,7 @@ import storage from 'redux-persist/lib/storage';
 
 import bikeReducer from '../../features/bikes/model/bikeSlice';
 import cartReducer from '../../features/cart/model/cartSlice';
-import themeReducer from '../../features/theme-toggle/model/themeSlice';
+import themeReducer from '../../entities/theme-toggle/model/themeSlice';
 
 const persistConfig = {
     key: 'root',
