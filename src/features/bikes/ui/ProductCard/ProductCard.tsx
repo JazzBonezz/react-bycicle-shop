@@ -8,7 +8,7 @@ import {
     ProductCard as StyledProductCard,
     RightSection,
     Title,
-    Image,
+    Image, TextThrough, TextRed
 } from './styles';
 import bicycleImage from '../../../../shared/assets/images/bycicle.jpg';
 import { useAppDispatch } from '../../../../app/providers/store';
@@ -21,6 +21,9 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ bike }) => {
     const dispatch = useAppDispatch();
+    const formattedPrice = Math.floor(bike.price).toLocaleString('ru-RU');
+    const formattedDiscountedPrice =  Math.floor(bike.price - (bike.price / 100) * bike.discount).toLocaleString('ru-RU');
+
 
     return (
         <StyledProductCard>
@@ -36,40 +39,21 @@ const ProductCard: React.FC<ProductCardProps> = ({ bike }) => {
                     {bike.discount && bike.discount > 0 ? (
                         <>
                             {' '}
-                            <span
-                                style={{ textAlign: 'center', margin: '0 8px' }}
-                            >
-                                {Math.floor(
-                                    bike.priceWithDiscount,
-                                ).toLocaleString('ru-RU')}{' '}
-                                ₽
+                            <span>
+                                {formattedDiscountedPrice}{' '}₽
                             </span>
-                            <span
-                                style={{
-                                    textDecoration: 'line-through',
-                                    color: '#888',
-                                    margin: '0 8px',
-                                    fontSize: '28px',
-                                    textAlign: 'start',
-                                }}
+                            <TextThrough
                             >
-                                {Math.floor(bike.price).toLocaleString('ru-RU')}{' '}
-                                ₽
-                            </span>
-                            <span
-                                style={{
-                                    color: 'red',
-                                    margin: '0 8px',
-                                    fontSize: '20px',
-                                    textAlign: 'start',
-                                }}
+                                {formattedPrice}{' '}₽
+                            </TextThrough>
+                            <TextRed
                             >
                                 Скидка {bike.discount}%
-                            </span>
+                            </TextRed>
                         </>
                     ) : (
                         <span>
-                            {Math.floor(bike.price).toLocaleString('ru-RU')} ₽
+                            {formattedPrice} ₽
                         </span>
                     )}
                 </PriceCard>

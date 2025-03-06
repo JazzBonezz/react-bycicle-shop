@@ -86,3 +86,18 @@ export const Description = styled.p`
     color: ${(props) => props.theme.colors.text};
     font-size: ${(props) => props.theme.fontSizes.default};
 `;
+
+export const TextThrough = styled.span`
+    text-decoration: line-through;
+    color: #d0c9c9;
+    margin: 0 8px;
+    font-size: 28px;
+    text-align: start;
+`
+
+export const TextRed = styled.span`
+    color: red;
+    margin: 0 8px;
+    font-size: 20px;
+    text-align: start;
+`

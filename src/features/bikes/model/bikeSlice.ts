@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import { Bike, BikeState } from './types';
 
 const initialState: BikeState = {
@@ -8,19 +8,28 @@ const initialState: BikeState = {
     error: null,
 };
 
+const normalizeBike = (bike: Bike): Bike => ({
+    ...bike,
+    category: Array.isArray(bike.category) ? bike.category : [],
+    specifications: {
+        ...bike.specifications,
+        frameSize: Array.isArray(bike.specifications?.frameSize)
+            ? bike.specifications.frameSize
+            : [],
+    },
+    priceWithDiscount: bike.price - (bike.price / 100) * bike.discount,
+});
+
 export const fetchBikes = createAsyncThunk(
     'bikes/fetchBikes',
-    async function (_, { rejectWithValue }) {
+    async (_, { rejectWithValue }) => {
         try {
-            const response = await axios.get('http://localhost:5000/bikes');
-            return response.data;
+            const { data } = await axios.get('http://localhost:5000/bikes');
+            return data.map(normalizeBike);
         } catch (error) {
-            const err = error as AxiosError; // Нашел решение
-            return rejectWithValue(
-                err.response?.data || 'Ошибка при получении данных',
-            );
+            return rejectWithValue(error instanceof Error ? error.message : 'Ошибка при получении данных');
         }
-    },
+    }
 );
 
 const bikeSlice = createSlice({
@@ -35,19 +44,11 @@ const bikeSlice = createSlice({
             })
             .addCase(fetchBikes.fulfilled, (state, action) => {
                 state.status = 'succeeded';
-                state.bikes = action.payload.map((bike: Bike) => ({
-                    ...bike,
-                    category: Array.isArray(bike.category) ? bike.category : [],
-                    // brand: bike.brand,inStock: bike.inStock,
-                    // frameSize: Array.isArray(bike.specifications.frameSize) ? bike.specifications.frameSize : [],
-                    //
-                    priceWithDiscount:
-                        bike.price - (bike.price / 100) * bike.discount,
-                }));
+                state.bikes = action.payload;
             })
             .addCase(fetchBikes.rejected, (state, action) => {
                 state.status = 'failed';
-                state.error = action.payload as string;
+                state.error = action.payload as string | null;
             });
     },
 });

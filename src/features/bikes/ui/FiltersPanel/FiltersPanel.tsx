@@ -7,26 +7,16 @@ import {
     FilterItem,
     Checkbox,
 } from './styles';
+import { FiltersPanelProps } from '../../model/types';
 
-interface FiltersPanelProps {
-    categories: string[];
-    brands: string[];
-    frameSizes: string[];
-    selectedCategory: string[];
-    selectedBrands: string[];
-    selectedFrameSizes: string[];
-    filterInStock: boolean;
-    priceRange: { min: number; max: number };
-    openFilters: Set<string>;
-    handleCategoryChange: (category: string) => void;
-    handleBrandChange: (brand: string) => void;
-    handleFrameSizeChange: (size: string) => void;
-    toggleFilter: (filter: string) => void;
-    setFilterInStock: React.Dispatch<React.SetStateAction<boolean>>;
-    setPriceRange: React.Dispatch<
-        React.SetStateAction<{ min: number; max: number }>
-    >;
-}
+const FILTER_KEYS = {
+    categories: 'categories',
+    brands: 'brands',
+    frameSizes: 'frameSizes',
+    inStock: 'inStock',
+    price: 'price',
+};
+
 
 const FiltersPanel: React.FC<FiltersPanelProps> = ({
     categories,
@@ -45,11 +35,13 @@ const FiltersPanel: React.FC<FiltersPanelProps> = ({
     setFilterInStock,
     setPriceRange,
 }) => {
+    const createToggleHandler = (filterKey: string) => () => toggleFilter(filterKey);
+
     return (
         <FilterSection>
             <FilterTitle>Фильтры</FilterTitle>
 
-            <FilterButton onClick={() => toggleFilter('categories')}>
+            <FilterButton onClick={createToggleHandler(FILTER_KEYS.categories)}>
                 Категории
             </FilterButton>
             <FilterList $isOpen={openFilters.has('categories')}>
@@ -66,7 +58,7 @@ const FiltersPanel: React.FC<FiltersPanelProps> = ({
                 ))}
             </FilterList>
 
-            <FilterButton onClick={() => toggleFilter('brands')}>
+            <FilterButton onClick={createToggleHandler(FILTER_KEYS.brands)}>
                 Бренды
             </FilterButton>
             <FilterList $isOpen={openFilters.has('brands')}>
@@ -83,7 +75,7 @@ const FiltersPanel: React.FC<FiltersPanelProps> = ({
                 ))}
             </FilterList>
 
-            <FilterButton onClick={() => toggleFilter('frameSizes')}>
+            <FilterButton onClick={createToggleHandler(FILTER_KEYS.frameSizes)}>
                 Размер рамы
             </FilterButton>
             <FilterList $isOpen={openFilters.has('frameSizes')}>
@@ -100,7 +92,7 @@ const FiltersPanel: React.FC<FiltersPanelProps> = ({
                 ))}
             </FilterList>
 
-            <FilterButton onClick={() => toggleFilter('inStock')}>
+            <FilterButton onClick={createToggleHandler(FILTER_KEYS.inStock)}>
                 Наличие на складе
             </FilterButton>
             <FilterList $isOpen={openFilters.has('inStock')}>
@@ -115,7 +107,7 @@ const FiltersPanel: React.FC<FiltersPanelProps> = ({
                 </FilterItem>
             </FilterList>
 
-            <FilterButton onClick={() => toggleFilter('price')}>
+            <FilterButton onClick={createToggleHandler(FILTER_KEYS.price)}>
                 Цена
             </FilterButton>
             <FilterList $isOpen={openFilters.has('price')}>
@@ -126,10 +118,8 @@ const FiltersPanel: React.FC<FiltersPanelProps> = ({
                             type="number"
                             value={priceRange.min}
                             onChange={(e) =>
-                                setPriceRange({
-                                    ...priceRange,
-                                    min: Number(e.target.value),
-                                })
+                                setPriceRange((prev) => ({ ...prev, min: Number(e.target.value) }))
+
                             }
                         />
                     </label>

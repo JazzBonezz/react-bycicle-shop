@@ -1,3 +1,5 @@
+import React from 'react';
+
 export interface BikeSpecifications {
     frameSize: string[];
 }
@@ -39,4 +41,24 @@ export interface BikeState {
     bikes: Bike[];
     status: 'idle' | 'loading' | 'succeeded' | 'failed';
     error: string | null;
+}
+
+export interface FiltersPanelProps {
+    categories: string[];
+    brands: string[];
+    frameSizes: string[];
+    selectedCategory: string[];
+    selectedBrands: string[];
+    selectedFrameSizes: string[];
+    filterInStock: boolean;
+    priceRange: { min: number; max: number };
+    openFilters: Set<string>;
+    handleCategoryChange: (category: string) => void;
+    handleBrandChange: (brand: string) => void;
+    handleFrameSizeChange: (size: string) => void;
+    toggleFilter: (filter: string) => void;
+    setFilterInStock: React.Dispatch<React.SetStateAction<boolean>>;
+    setPriceRange: React.Dispatch<
+        React.SetStateAction<{ min: number; max: number }>
+    >;
 }

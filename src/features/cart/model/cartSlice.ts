@@ -5,6 +5,13 @@ const initialState: CartState = {
     items: [],
 };
 
+const updateQuantity = (state: CartState, itemId: string, change: number) => {
+    const item = state.items.find((item) => item.id === itemId);
+    if (item && (change > 0 || item.quantity > 1)) {
+        item.quantity += change;
+    }
+};
+
 const cartSlice = createSlice({
     name: 'cart',
     initialState,
@@ -31,16 +38,10 @@ const cartSlice = createSlice({
             state.items = [];
         },
         increaseQuantity: (state, action: PayloadAction<string>) => {
-            const item = state.items.find((item) => item.id === action.payload);
-            if (item) {
-                item.quantity += 1;
-            }
+            updateQuantity(state, action.payload, 1);
         },
         decreaseQuantity: (state, action: PayloadAction<string>) => {
-            const item = state.items.find((item) => item.id === action.payload);
-            if (item && item.quantity > 1) {
-                item.quantity -= 1;
-            }
+            updateQuantity(state, action.payload, -1);
         },
     },
 });

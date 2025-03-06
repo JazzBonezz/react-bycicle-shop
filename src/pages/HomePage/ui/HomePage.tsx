@@ -1,5 +1,3 @@
-// Не придумал чем заполнить
-
 import { useAppDispatch } from '../../../app/providers/store';
 import { toggleTheme } from '../../../entities/theme-toggle/model/themeSlice';
 

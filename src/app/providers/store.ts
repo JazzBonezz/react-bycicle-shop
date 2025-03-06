@@ -10,7 +10,6 @@ import themeReducer from '../../entities/theme-toggle/model/themeSlice';
 const persistConfig = {
     key: 'root',
     storage,
-    //whitelist: ['theme', 'cart'], При добавлении это строки persist не рабоатет. Почему так?
 };
 
 const rootReducer = combineReducers({
