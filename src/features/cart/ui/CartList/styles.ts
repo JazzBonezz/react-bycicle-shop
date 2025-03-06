@@ -19,4 +19,3 @@ export const ItemList = styled.ul`
     background-color: ${(props) => props.theme.colors.sectionBackground};
     color: ${(props) => props.theme.colors.text};
 `;
-

@@ -1,6 +1,6 @@
 import { Burger, BurgerMenu, BurgerMenuContainer, NavLink } from './styles';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6';
-import {FC} from "react";
+import { FC } from 'react';
 
 interface BurgerMenuProps {
     isOpen: boolean;
@@ -9,7 +9,11 @@ interface BurgerMenuProps {
 
 const BurgerMenuComponent: FC<BurgerMenuProps> = ({ isOpen, setIsOpen }) => (
     <>
-        <Burger aria-label="Открыть/закрыть меню" $isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
+        <Burger
+            aria-label="Открыть/закрыть меню"
+            $isOpen={isOpen}
+            onClick={() => setIsOpen(!isOpen)}
+        >
             {isOpen ? <FaChevronRight /> : <FaChevronLeft />}
         </Burger>
 

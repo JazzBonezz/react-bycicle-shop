@@ -27,9 +27,13 @@ export const fetchBikes = createAsyncThunk(
             const { data } = await axios.get('http://localhost:5000/bikes');
             return data.map(normalizeBike);
         } catch (error) {
-            return rejectWithValue(error instanceof Error ? error.message : 'Ошибка при получении данных');
+            return rejectWithValue(
+                error instanceof Error
+                    ? error.message
+                    : 'Ошибка при получении данных',
+            );
         }
-    }
+    },
 );
 
 const bikeSlice = createSlice({

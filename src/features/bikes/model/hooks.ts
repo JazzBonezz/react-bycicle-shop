@@ -13,14 +13,19 @@ export const useFilteredBikes = ({
 }: UseFilteredBikesProps): Bike[] => {
     return useMemo(() => {
         return bikes.filter((bike) => {
-            const matchesSearch = bike.name?.toLowerCase().includes(searchTerm.toLowerCase());
+            const matchesSearch = bike.name
+                ?.toLowerCase()
+                .includes(searchTerm.toLowerCase());
 
             const matchesCategory =
                 selectedCategories.length === 0 ||
-                selectedCategories.every((cat) => (bike.category || []).includes(cat));
+                selectedCategories.every((cat) =>
+                    (bike.category || []).includes(cat),
+                );
 
             const matchesBrand =
-                selectedBrands.length === 0 || selectedBrands.includes(bike.brand);
+                selectedBrands.length === 0 ||
+                selectedBrands.includes(bike.brand);
 
             const matchesPrice =
                 Math.floor(bike.priceWithDiscount) >= priceRange.min &&
@@ -29,7 +34,7 @@ export const useFilteredBikes = ({
             const matchesFrameSize =
                 selectedFrameSizes.length === 0 ||
                 (bike.specifications?.frameSize || []).some((size) =>
-                    selectedFrameSizes.includes(size)
+                    selectedFrameSizes.includes(size),
                 );
 
             const matchesStock = !inStock || bike.inStock;
@@ -43,5 +48,13 @@ export const useFilteredBikes = ({
                 matchesStock
             );
         });
-    }, [bikes, searchTerm, selectedCategories, selectedBrands, priceRange, selectedFrameSizes, inStock]);
+    }, [
+        bikes,
+        searchTerm,
+        selectedCategories,
+        selectedBrands,
+        priceRange,
+        selectedFrameSizes,
+        inStock,
+    ]);
 };

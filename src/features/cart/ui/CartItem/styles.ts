@@ -17,4 +17,3 @@ export const Quantity = styled.p`
     display: flex;
     align-items: center;
 `;
-

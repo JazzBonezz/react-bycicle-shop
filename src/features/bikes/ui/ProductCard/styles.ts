@@ -93,11 +93,11 @@ export const TextThrough = styled.span`
     margin: 0 8px;
     font-size: 28px;
     text-align: start;
-`
+`;
 
 export const TextRed = styled.span`
     color: red;
     margin: 0 8px;
     font-size: 20px;
     text-align: start;
-`
+`;

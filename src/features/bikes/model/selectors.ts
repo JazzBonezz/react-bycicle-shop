@@ -6,9 +6,7 @@ export const useCategories = (bikes: Bike[] = []) => {
 };
 
 export const useBrands = (bikes: Bike[] = []) => {
-    const allBrands = bikes
-        .map((bike) => bike.brand)
-        .filter(Boolean);
+    const allBrands = bikes.map((bike) => bike.brand).filter(Boolean);
     return Array.from(new Set(allBrands)).sort();
 };
 

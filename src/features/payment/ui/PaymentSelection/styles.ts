@@ -23,4 +23,3 @@ export const PayPageButton = styled.button<{ $active?: boolean }>`
         background: ${({ $active }) => ($active ? '#9368B7' : '#ccc')};
     }
 `;
-

@@ -4,7 +4,7 @@ import { formatPrice } from '../../../../shared/Helpers/formatPrice';
 import DeliverySelection from '../DeliverySelection/DeliverySelection';
 import PaymentSelection from '../PaymentSelection/PaymentSelection';
 import { Button } from '../../../../shared/components/CustomButton/';
-import {PaymentDetailsProps} from '../../model/types'
+import { PaymentDetailsProps } from '../../model/types';
 
 const PaymentDetails: React.FC<PaymentDetailsProps> = ({
     activeDelivery,

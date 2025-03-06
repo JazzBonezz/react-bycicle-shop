@@ -1,7 +1,6 @@
 import { SecondaryTitle, ItemList } from './styles';
 import CartItem from '../CartItem/CartItem';
-import {CartItem as CartItemType} from '../../model/cartTypes';
-
+import { CartItem as CartItemType } from '../../model/cartTypes';
 
 interface CartListProps {
     cartItems: CartItemType[];
@@ -14,7 +13,11 @@ const CartList: React.FC<CartListProps> = ({ cartItems, onOpenModal }) => (
         <ItemList>
             {cartItems.length > 0 ? (
                 cartItems.map((item) => (
-                    <CartItem key={item.id} item={item} onOpenModal={onOpenModal} />
+                    <CartItem
+                        key={item.id}
+                        item={item}
+                        onOpenModal={onOpenModal}
+                    />
                 ))
             ) : (
                 <p>Корзина пуста</p>

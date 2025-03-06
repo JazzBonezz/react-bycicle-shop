@@ -13,5 +13,3 @@ export const Container = styled(Form)`
         grid-template-rows: 3fr 1fr;
     }
 `;
-
-

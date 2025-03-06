@@ -7,7 +7,7 @@ import {
     usePaymentForm,
     useTotalPrice,
 } from '../../../features/payment/model/hooks';
-import {PayForm, PaymentDetails} from "../../../features/payment";
+import { PayForm, PaymentDetails } from '../../../features/payment';
 
 const PayPage = () => {
     const [activeDelivery, setActiveDelivery] = useState<string | null>(null);

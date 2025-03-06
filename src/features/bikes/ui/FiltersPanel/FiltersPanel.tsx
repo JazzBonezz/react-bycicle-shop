@@ -17,7 +17,6 @@ const FILTER_KEYS = {
     price: 'price',
 };
 
-
 const FiltersPanel: React.FC<FiltersPanelProps> = ({
     categories,
     brands,
@@ -35,7 +34,8 @@ const FiltersPanel: React.FC<FiltersPanelProps> = ({
     setFilterInStock,
     setPriceRange,
 }) => {
-    const createToggleHandler = (filterKey: string) => () => toggleFilter(filterKey);
+    const createToggleHandler = (filterKey: string) => () =>
+        toggleFilter(filterKey);
 
     return (
         <FilterSection>
@@ -118,8 +118,10 @@ const FiltersPanel: React.FC<FiltersPanelProps> = ({
                             type="number"
                             value={priceRange.min}
                             onChange={(e) =>
-                                setPriceRange((prev) => ({ ...prev, min: Number(e.target.value) }))
-
+                                setPriceRange((prev) => ({
+                                    ...prev,
+                                    min: Number(e.target.value),
+                                }))
                             }
                         />
                     </label>

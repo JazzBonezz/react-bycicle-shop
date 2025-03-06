@@ -36,14 +36,19 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 
     const sortedBikes = useMemo(() => {
         return [...filteredBikes].sort((a, b) => {
-            if (sortOrder === SortOrder.Asc) return a.priceWithDiscount - b.priceWithDiscount;
-            if (sortOrder === SortOrder.Desc) return b.priceWithDiscount - a.priceWithDiscount;
+            if (sortOrder === SortOrder.Asc)
+                return a.priceWithDiscount - b.priceWithDiscount;
+            if (sortOrder === SortOrder.Desc)
+                return b.priceWithDiscount - a.priceWithDiscount;
             return 0;
         });
     }, [filteredBikes, sortOrder]);
 
     const toggleSortOrder = () => {
-        setSortOrder((prev) => orderCycle[(orderCycle.indexOf(prev) + 1) % orderCycle.length]);
+        setSortOrder(
+            (prev) =>
+                orderCycle[(orderCycle.indexOf(prev) + 1) % orderCycle.length],
+        );
     };
 
     useEffect(() => {
@@ -57,7 +62,11 @@ const ProductList: React.FC<ProductListProps> = (props) => {
         <div>
             <MainTitle>Каталог велосипедов</MainTitle>
 
-            <SortButton onClick={toggleSortOrder} width="fit-content" showIcon={false}>
+            <SortButton
+                onClick={toggleSortOrder}
+                width="fit-content"
+                showIcon={false}
+            >
                 Сортировка по цене: {sortIcons[sortOrder]}
             </SortButton>
 

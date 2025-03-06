@@ -1,53 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Container, LeftSection, RightSection } from './styles';
-import { useAppSelector, useAppDispatch } from '../../../app/providers/store';
-import {
-    selectCartItems,
-    selectCartSubtotal,
-    selectCartTotalWithDiscount,
-} from '../../../features/cart/model/cartSelectors';
-import { removeFromCart } from '../../../features/cart/model/cartSlice';
-import Modal from '../../../shared/components/Modal/Modal';
 import CartList from '../../../features/cart/ui/CartList/CartList';
 import CartSummary from '../../../features/cart/ui/CartSummary/CartSummary';
+import Modal from '../../../shared/components/Modal/Modal';
+import { useCartSelectors } from '../../../features/cart/model/hooks/useCartSelectors';
+import { useCartModal } from '../../../features/cart/model/hooks/useCartModal';
 
 const CartPage = () => {
-    const dispatch = useAppDispatch();
-    const cartItems = useAppSelector(selectCartItems);
-    const subtotal = useAppSelector(selectCartSubtotal);
-    const totalWithDiscount = useAppSelector(selectCartTotalWithDiscount);
-
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [itemToRemove, setItemToRemove] = useState<string | null>(null);
-
-    const handleOpenModal = (id: string) => {
-        setItemToRemove(id);
-        setIsModalOpen(true);
-    };
-
-    const handleConfirmRemove = () => {
-        if (itemToRemove) {
-            dispatch(removeFromCart(itemToRemove));
-        }
-        setIsModalOpen(false);
-    };
+    const { cartItems, subtotal, totalWithDiscount } = useCartSelectors();
+    const { isModalOpen, openModal, closeModal, confirmRemove } =
+        useCartModal();
 
     return (
         <>
             <Container>
                 <LeftSection>
-                    <CartList cartItems={cartItems} onOpenModal={handleOpenModal} />
+                    <CartList cartItems={cartItems} onOpenModal={openModal} />
                 </LeftSection>
 
                 <RightSection>
-                    <CartSummary subtotal={subtotal} totalWithDiscount={totalWithDiscount} />
+                    <CartSummary
+                        subtotal={subtotal}
+                        totalWithDiscount={totalWithDiscount}
+                    />
                 </RightSection>
             </Container>
 
             <Modal
                 isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
-                onConfirm={handleConfirmRemove}
+                onClose={closeModal}
+                onConfirm={confirmRemove}
                 title="Удаление товара"
                 message="Вы точно хотите убрать товар из корзины?"
             />

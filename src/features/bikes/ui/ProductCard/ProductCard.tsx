@@ -8,7 +8,9 @@ import {
     ProductCard as StyledProductCard,
     RightSection,
     Title,
-    Image, TextThrough, TextRed
+    Image,
+    TextThrough,
+    TextRed,
 } from './styles';
 import bicycleImage from '../../../../shared/assets/images/bycicle.jpg';
 import { useAppDispatch } from '../../../../app/providers/store';
@@ -22,8 +24,9 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ bike }) => {
     const dispatch = useAppDispatch();
     const formattedPrice = Math.floor(bike.price).toLocaleString('ru-RU');
-    const formattedDiscountedPrice =  Math.floor(bike.price - (bike.price / 100) * bike.discount).toLocaleString('ru-RU');
-
+    const formattedDiscountedPrice = Math.floor(
+        bike.price - (bike.price / 100) * bike.discount,
+    ).toLocaleString('ru-RU');
 
     return (
         <StyledProductCard>
@@ -39,22 +42,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ bike }) => {
                     {bike.discount && bike.discount > 0 ? (
                         <>
                             {' '}
-                            <span>
-                                {formattedDiscountedPrice}{' '}₽
-                            </span>
-                            <TextThrough
-                            >
-                                {formattedPrice}{' '}₽
-                            </TextThrough>
-                            <TextRed
-                            >
-                                Скидка {bike.discount}%
-                            </TextRed>
+                            <span>{formattedDiscountedPrice} ₽</span>
+                            <TextThrough>{formattedPrice} ₽</TextThrough>
+                            <TextRed>Скидка {bike.discount}%</TextRed>
                         </>
                     ) : (
-                        <span>
-                            {formattedPrice} ₽
-                        </span>
+                        <span>{formattedPrice} ₽</span>
                     )}
                 </PriceCard>
                 <CardButton
